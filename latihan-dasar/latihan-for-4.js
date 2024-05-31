@@ -1,11 +1,3 @@
-/*
- - - - - *
- - - - * *
- - - * * *
- - * * * *
- * * * * * 
- */
-
 // Menampilkan segitiga ke console.log
 let angkaUser = prompt("Latihan membuat segita\n Silahkan input angka : "); /* Meminta user untuk memasukan sebuah 
 angka sembarang */
