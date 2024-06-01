@@ -4,6 +4,7 @@ angka sembarang */
 
 let loop = parseInt(angkaUser); // ubah angka yang dimasukan user ke int
 
+// Menampilkan segitiga pada console
 for (let i = 0; i < loop; i++) {
     let baris = ""; // var baris untuk menyimpan *
     for (let j = 0; j < i; j++) {
