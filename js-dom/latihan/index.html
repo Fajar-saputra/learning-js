@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Latihan 1</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            body {
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                row-gap: 2rem;
+                height: 100vh;
+            }
+            h1 {
+                font-family: Arial, Helvetica, sans-serif;
+                padding: 15px 20px;
+                background-color: white;
+                border: 1px solid black;
+            }
+            button.btn {
+                padding: 15px 20px;
+                background-color: rgb(223, 158, 255);
+                border: none;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Bermain dengan warna</h1>
+        <button type="submit" class="btn">Ubah background</button>
+        <input type="range" min="0" max="255" value="0" />
+        <input type="range" min="0" max="255" value="0" />
+        <input type="range" min="0" max="255" value="0" />
+        <script src="script.js"></script>
+    </body>
+</html>
