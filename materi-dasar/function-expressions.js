@@ -14,6 +14,17 @@ let kuadrat = function (num) {
     return num > 0 ? num * num : "angka negatif tidak kami kuadratkan";
 };
 
+let search = function (array, searchValue) {
+    for (const element of array) {
+        if (element === searchValue) {
+            return true;
+        }
+    }
+
+    return false;
+};
+
 console.log(kali(4, 5));
 console.log(luas_segitiga(4, 5));
 console.log(kuadrat(-4));
+console.log(search([1, 2, 3, 4, 5], 5));
