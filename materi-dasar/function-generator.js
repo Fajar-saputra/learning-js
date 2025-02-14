@@ -10,6 +10,8 @@ for (const name of names) {
     console.log(name);
 }
 
+
+// lazy generator
 function* buatGanjil(value) {
     for (let i = 1; i <= value; i++) {
         if (i % 2 === 1) {

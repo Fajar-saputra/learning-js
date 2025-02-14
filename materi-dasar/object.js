@@ -22,3 +22,27 @@ let MataKuliah = {
 };
 
 // let Kalkulus = new MataKuliah();
+
+const person = {
+    nama: 'Elvira',
+
+    sayHello: function (nama) {
+        console.log(`Hello ${nama}`)
+    }
+}
+
+console.log(person.nama)
+person.sayHello('tata')
+
+// Menambah Method ke Object
+const kucing = {
+    name: 'anggora'
+}
+
+kucing.sayHello = function (nama) {
+    console.log(`Hello ${nama}`)
+}
+kucing.sayHaii =  (nama) => console.log(`Hello ${nama}`)
+
+kucing.sayHello('Anggora')
+kucing.sayHello('Kucing kampung')
