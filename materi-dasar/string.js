@@ -37,3 +37,16 @@ console.log(typeof (rupiah))
 // digit 
 let angkaRandom = 1.34415
 console.log(angkaRandom.toFixed(2))
+
+// join()
+let array = ['apple', 'mangga', 'durian', 'duku', 'rambutan'];
+
+console.log(array.join('-'))
+console.log(array.join(' '))
+console.log(array.join(','))
+
+// split()
+let contohSplit1 = 'test-array-di-string'
+let contohSplit2 = 'test array di string'
+console.log(contohSplit1.split('-'))
+console.log(contohSplit2.split(' '))

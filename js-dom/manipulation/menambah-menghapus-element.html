@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Menambah Menghapus Element</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 90%;
+            margin: 1rem auto 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 id="title">DOM menambah dan hapus element</h1>
+        <ul id="list">
+            <li>item 1</li>
+            <!-- muncul disini -->
+            <li id="item-2">item 2</li>
+            <li>item 3</li>
+            <!-- append child muncul di paling bawah -->
+        </ul>
+
+    </div>
+
+    <script>
+        // appendChild()
+        let elementBaru = document.createElement('h1')
+        elementBaru.textContent = 'ini dibuat dengan script'
+        let elementUl = document.querySelector('#list')
+        elementUl.appendChild(elementBaru)
+
+
+        // inserBefore( , )
+        let elementLiBaru = document.createElement('li')
+        elementLiBaru.textContent = 'ini li baru js';
+        let liKedua = document.querySelector('li:nth-child(2)');
+        let parentsUl = document.querySelector('#list');
+        parentsUl.insertBefore(elementLiBaru, liKedua)
+
+        // hapus element
+        let liPertama = document.querySelector('li:nth-child(1)');
+        liPertama.remove()
+
+
+        // document.body.remove()
+
+    </script>
+</body>
+
+</html>

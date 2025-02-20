@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Manipulasi Element</title>
+    <style>
+        .bg-red {
+            background-color: aqua;
+            padding: .5rem 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <h1>title</h1>
+        <p class="content">ini text</p>
+    </div>
+    <p id="test">ini paragraph</p>
+    <ul>
+        <li>ini item 1</li>
+        <li>ini item 2</li>
+        <li>ini item 3</li>
+    </ul>
+    <script>
+        // mengubah konten
+        // 1. element.textContent
+        let elementLi = document.querySelector('li:last-child')
+
+        elementLi.style.fontSize = '1.2rem'
+        elementLi.style.textTransform = 'uppercase'
+
+        elementLi.textContent = 'item ini diubah menggunakan textContent'
+
+
+
+        // // 2. element.innerHTML
+        let test = document.querySelector('#test')
+
+        test.innerHTML = '<h3> test tukar p dengan heading 1</h3>'
+        test.style.textTransform = '2rem'
+        test.style.textTransform = 'uppercase'
+
+        // manipulasi attribute
+        let paragraph = document.querySelector('.content')
+        console.log(paragraph);
+
+        paragraph.textContent = 'testing kali'
+
+        paragraph.setAttribute('class', "bg-red")
+
+    </script>
+</body>
+
+</html>
