@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Quote Generator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            background-color: antiquewhite;
+        }
+
+        .quote-container {
+            max-width: 400px;
+            width: 90%;
+            margin: auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+            padding: 2rem 1rem;
+            display: flex;
+            flex-direction: column;
+            row-gap: 1rem;
+            background-color: #fff;
+            border-radius: .5rem;
+        }
+
+        .quote {
+            text-transform: capitalize;
+        }
+
+        .author {
+            font-size: .9rem;
+            font-style: italic;
+        }
+
+        .new-quote {
+            border: none;
+            padding: 1rem 0;
+            font-size: .8rem;
+            transition: .4s ease;
+        }
+
+        .new-quote:hover {
+            background-color: rgb(121, 255, 255);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="quote-container">
+        <blockquote class="quote">Ini quotenya</blockquote>
+        <cite class="author">Author</cite>
+        <button class="new-quote">Generate quote</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
