@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        Calculator
+    </title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            background-color: aquamarine;
+        }
+
+        .calculator-container {
+            background-color: #fff;
+            margin: auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+            border-radius: .3rem;
+            padding: 1rem;
+            width: 300px;
+        }
+
+        .calculator-display {
+            height: 50px;
+            width: 100%;
+            background-color: #f6f6f6;
+        }
+
+        .calculator-tombol {
+            display: grid;
+            grid-template-areas: 'left left left right'
+            'left left left right'
+            'left left left right';
+        }
+
+        .calculator-left {
+            grid-area: left;
+        }
+        .calculator-right {
+            grid-area: right;
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="calculator-container">
+        <div class="calculator-display"></div>
+        <div class="calculator-tombol">
+            <div class="calculator-left">
+                <div class="calculator-item">
+                    <span value="1">1</span>
+                    <span value="2">2</span>
+                    <span value="3">3</span>
+
+                </div>
+                <div class="calculator-item">
+                    <span value="4">4</span>
+                    <span value="5">5</span>
+                    <span value="6">6</span>
+
+                </div>
+                <div class="calculator-item">
+                    <span value="7">7</span>
+                    <span value="8">8</span>
+                    <span value="9">9</span>
+                </div>
+            </div>
+            <div class="calculator-right">
+                <span class="plus">+</span>
+                <span class="minus">-</span>
+                <span class="kali">*</span>
+                <span class="bagi">/x</span>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
