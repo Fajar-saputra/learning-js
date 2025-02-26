@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Element</title>
+</head>
+
+<body>
+    <a href="">Test</a>
+    <label for=""></label>
+
+
+
+    <script>
+        const ambilTarget = document.querySelector('a')
+        ambilTarget.href = 'https://www.youtube.com'
+        ambilTarget.target = '_blank'
+        ambilTarget.textContent = "Testing ke youtube"
+        ambilTarget.value = '123'
+        ambilTarget.className = 'test__dulu'
+        ambilTarget.id = 'testing'
+
+        console.log(ambilTarget)
+        
+        const targetLabel = document.querySelector('label')
+        targetLabel.textContent = 'Password'
+        targetLabel.className = 'label__password'
+        targetLabel.id = 'label__password'
+        
+        console.log(targetLabel)
+    </script>
+</body>
+
+</html>

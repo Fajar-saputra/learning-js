@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Belajar javaScript DOM</title>
+</head>
+<body>
+    <div class="content" id="content">
+        <h1 class="title" id="title">This is Title</h1>
+        <p class="description" id="description">This is description</p>
+    </div>
+
+
+    <script>
+        const content = document.querySelector('#content')
+
+        console.info(content.id)
+        console.info(content.tagName)
+        console.info(content.className)
+    </script>
+</body>
+</html>

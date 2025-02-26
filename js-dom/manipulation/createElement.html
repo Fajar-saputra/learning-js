@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Element</title>
+</head>
+
+<body>
+    <div class="content"></div>
+
+    <script>
+        const content = document.querySelector('.content');
+
+        const title = document.createElement('h1'),
+            description = document.createElement('p');
+
+        title.textContent = "This is title";
+        description.textContent = "This is description";
+
+        content.appendChild(title)
+        content.appendChild(description)
+    </script>
+</body>
+
+</html>

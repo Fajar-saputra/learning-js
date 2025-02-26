@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attribute</title>
+</head>
+
+<body>
+    <img src="contoh-aja.png" alt="contoh aja alt" class="image__contoh">
+
+    <script>
+        const images = document.querySelector('.image__contoh'),
+            srcImagesGetAttributeNodeSrc = images.getAttributeNode('src'),
+            srcImagesGetAttributeSrc = images.getAttribute('src'),
+            srcImagesGetAttributeAlt = images.getAttribute('alt')
+
+        console.log(images)
+        // node list
+        console.log(srcImagesGetAttributeNodeSrc)
+        console.log(srcImagesGetAttributeNodeSrc.name)
+        console.log(srcImagesGetAttributeNodeSrc.value)
+
+        // src tanpa node
+        console.log(srcImagesGetAttributeSrc)
+        // alt tanpa alt
+        console.log(srcImagesGetAttributeAlt)
+
+    </script>
+</body>
+
+</html>

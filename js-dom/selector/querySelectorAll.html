@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attribute Selector By querySelectorAll</title>
+</head>
+<body>
+    <p class="title"></p>
+    <p class="subtitle"></p>
+    <p class="description"></p>
+
+    <p class="el"></p>
+    <p class="elvi"></p>
+    <p class="elfita"></p>
+
+
+    <script>
+        const targetAll = document.querySelectorAll('[class]')
+        console.log(targetAll)
+
+        const targetHurufPadaClass = document.querySelectorAll('[class^=el]')
+        console.info(targetHurufPadaClass)
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NamedNodeMap</title>
+</head>
+
+<body>
+    <h1>NamedNodeMap</h1>
+    <p>NamedNodeMap merupakan kumpulan dari Attri, mirip seperti NodesList, namun isinya adalah Attr</p>
+
+    <img src="contoh.png" alt="contoh aja" class="contoh__aja">
+
+    <input type="email" name="email" id="email" placeholder="email" min="0" max="10" required>
+
+    <section class="tesAja" id="testAja"></section>
+
+    <script>
+        const image = document.querySelector('.contoh__aja'),
+            attributes = image.attributes
+
+        for (let attribut of attributes) {
+            console.info(`${attribut.name}: ${attribut.value}`)
+        }
+
+        const input = document.querySelector("input"),
+            attrInput = input.attributes
+
+
+        for (let item of attrInput) {
+            console.info(`${item.name}: ${item.value}`)
+        }
+
+        const contohPadaClass = document.querySelector('section'),
+            items = contohPadaClass.attributes
+
+        for (let item of items) {
+            console.log(`${item.name} : ${item.value}`)
+        }
+    </script>
+</body>
+
+</html>

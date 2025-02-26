@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node list</title>
+</head>
+
+<body>
+    <ul>
+        <li id="menu1">test aja dulu</li>
+        <li id="menu2">test aja dulu</li>
+        <li id="menu3">test aja dulu</li>
+        <li id="menu4">test aja dulu</li>
+    </ul>
+
+
+    <script>
+        const list = document.querySelectorAll('li'),
+            list1 = document.getElementById('menu1').childNodes
+
+        console.info(list)
+        console.info(list1)
+
+        // nodeList Live
+        const menu2 = document.getElementById('menu2');
+        const list2 = menu2.childNodes
+
+        menu2.append(document.createElement('li'))
+        menu2.append(document.createElement('li'))
+
+        console.info(list2)
+
+        // nodeList Static
+        const listAll = document.querySelectorAll('li');
+        const menu3 = document.getElementById('menu3')
+
+        menu3.append(document.createElement('li'))
+        menu3.append(document.createElement('li'))
+
+        console.info(listAll)
+    </script>
+</body>
+
+</html>
