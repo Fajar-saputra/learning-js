@@ -1,24 +1,35 @@
-const p4 = document.querySelector("section#b p");
+const buttonClick = document.querySelector(".btn-ul"),
+    hapusLi = document.querySelector(".btn-hapus-li"),
+    elementli = document.querySelectorAll("li");
 
-// p4.addEventListener("click", () => {
-//     p4.classList.toggle("toggle");
-// });
+let itemNumber = 4;
 
-// let isToggel = false;
-// p4.addEventListener("click", function () {
-//     if (isToggel) {
-//         p4.style.backgroundColor = "";
-//     } else {
-//         p4.style.backgroundColor = "aqua";
-//     }
-//     isToggel = !isToggel;
-// });
+buttonClick.addEventListener("click", function () {
+    buttonClick.classList.toggle("toggle");
 
-p4.addEventListener("click", function () {
-    p4.classList.toggle("toggle");
-    const liBaru = document.createElement("li");
-    const isiLi = document.createTextNode("item baru");
-    liBaru.appendChild(isiLi);
-    const ul = document.querySelector("section#b ul");
-    ul.appendChild(liBaru);
+    const elementLi = document.createElement("li");
+    const elementContent = document.createTextNode(`item baru ${itemNumber}`);
+    elementLi.appendChild(elementContent);
+
+    const elementUl = document.querySelector(".list-item");
+    elementUl.appendChild(elementLi);
+    itemNumber++;
 });
+
+hapusLi.forEach(itemLi => {
+    hapusLi.addEventListener('click', () => {
+        itemLi.remove()
+    })
+});
+
+
+const paragraf = document.querySelectorAll("p"),
+    buttonParagraf = document.querySelector(".btn-p");
+
+paragraf.forEach((element) => {
+    element.addEventListener("click", function () {
+        element.style.color = "red";
+    });
+});
+
+console.log(paragraf);
