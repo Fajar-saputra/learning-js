@@ -20,73 +20,88 @@
             height: 100vh;
             width: 100%;
             display: flex;
-            background-color: aquamarine;
+            background-color: rgb(224, 255, 245);
         }
 
-        .calculator-container {
+        .calculator {
+            width: 300px;
             background-color: #fff;
             margin: auto;
-            box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+            box-shadow: 0 0 10px rgba(0, 0, 0, .1);
             border-radius: .3rem;
-            padding: 1rem;
-            width: 300px;
+            padding: 1.5rem;
         }
 
-        .calculator-display {
+        .display {
             height: 50px;
             width: 100%;
-            background-color: #f6f6f6;
+            padding: .9rem;
+            font-size: 1rem;
+            font-weight: bold;
+            text-align: right;
+            margin-bottom: 1.5rem;
+            background-color: #363434;
+            border: none;
+            border: .5rem;
+            color: #fff;
         }
 
-        .calculator-tombol {
+        .keys {
             display: grid;
-            grid-template-areas: 'left left left right'
-            'left left left right'
-            'left left left right';
+            grid-template-columns: repeat(4, 1fr);
+            gap: .5rem;
         }
 
-        .calculator-left {
-            grid-area: left;
+        .number,
+        .operator {
+            width: 100%;
+            height: 40px;
+            padding: .8rem;
+            font-size: .9rem;
+            font-weight: bold;
+            text-align: center;
+            border: none;
+            border-radius: .2rem;
+            cursor: pointer;
+            background-color: #f0f0f0;
+            transition: background-color .3s ease;
         }
-        .calculator-right {
-            grid-area: right;
-            display: flex;
-            flex-direction: column;
+
+        .number:hover {
+            background-color: rgba(0, 255, 255, .4);
+        }
+
+        .operator:hover {
+            background-color: #ffae00;
         }
     </style>
 </head>
 
 <body>
-    <div class="calculator-container">
-        <div class="calculator-display"></div>
-        <div class="calculator-tombol">
-            <div class="calculator-left">
-                <div class="calculator-item">
-                    <span value="1">1</span>
-                    <span value="2">2</span>
-                    <span value="3">3</span>
-
-                </div>
-                <div class="calculator-item">
-                    <span value="4">4</span>
-                    <span value="5">5</span>
-                    <span value="6">6</span>
-
-                </div>
-                <div class="calculator-item">
-                    <span value="7">7</span>
-                    <span value="8">8</span>
-                    <span value="9">9</span>
-                </div>
-            </div>
-            <div class="calculator-right">
-                <span class="plus">+</span>
-                <span class="minus">-</span>
-                <span class="kali">*</span>
-                <span class="bagi">/x</span>
-            </div>
+    <div class="calculator">
+        <input type="text" class="display" disabled>
+        <div class="keys">
+            <button class="number" onclick="tambahNumber('7')">7</button>
+            <button class="number" onclick="tambahNumber('8')">8</button>
+            <button class="number" onclick="tambahNumber('9')">9</button>
+            <button class="operator" onclick="tambahOperator('/')">/</button>
+            <button class="number" onclick="tambahNumber('4')">4</button>
+            <button class="number" onclick="tambahNumber('5')">5</button>
+            <button class="number" onclick="tambahNumber('6')">6</button>
+            <button class="operator" onclick="tambahOperator('*')">*</button>
+            <button class="number" onclick="tambahNumber('1')">1</button>
+            <button class="number" onclick="tambahNumber('2')">2</button>
+            <button class="number" onclick="tambahNumber('3')">3</button>
+            <button class="operator" onclick="tambahOperator('-')">-</button>
+            <button class="number" onclick="tambahNumber('0')">0</button>
+            <button class="operator" onclick="tambahOperator('.')">.</button>
+            <button class="operator" onclick="tambahOperator('+')">+</button>
+            <button class="operator" onclick="hasil()">=</button>
+            <button class="operator" onclick="hapus()">AC</button>
         </div>
     </div>
+
+    <script src="script.js"></script>
 </body>
 
 </html>
