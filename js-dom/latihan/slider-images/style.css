@@ -1,0 +1,103 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+}
+
+img {
+    max-width: 100%;
+}
+
+.carousel__container {
+    margin: auto;
+    position: relative;
+    max-width: 1000px;
+    height: 500px;
+    width: 90%;
+    overflow: hidden;
+    border-radius: .5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .1);
+}
+
+.carousel__slide {
+    display: flex;
+    transition: transform .4s ease-in-out;
+}
+
+.carousel__slide img {
+    width: 100%;
+    border-radius: .9rem;
+}
+
+.btn-next,
+.btn-prev {
+    width: 0;
+    height: 0;
+    position: absolute;
+    transition: .3s all ease;
+
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+}
+
+.btn-prev {
+    left: 0;
+    border-right: 30px solid rgb(255, 149, 0);
+    border-top: 30px solid transparent;
+    border-bottom: 30px solid transparent;
+}
+
+.btn-next {
+    right: 0;
+    border-left: 30px solid rgb(255, 149, 0);
+    border-top: 30px solid transparent;
+    border-bottom: 30px solid transparent;
+}
+
+.btn-prev:hover {
+    border-right: 30px solid rgb(0, 255, 128);
+    /* transform: scale(1.1); */
+}
+
+.btn-next:hover {
+    /* transform: scale(1.1); */
+    border-left: 30px solid rgb(0, 255, 128);
+}
+
+
+.carousel__indicators {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.indicator {
+    width: .8rem;
+    height: .8rem;
+    background-color: rgb(0, 255, 47);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color .3s ease;
+}
+
+.indicator.active {
+    background-color: hotpink;
+}
+.indicator:hover {
+    background-color: rgb(255, 247, 0);
+}

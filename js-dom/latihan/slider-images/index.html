@@ -6,23 +6,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Slider Images</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-    </style>
+
 </head>
 
 <body>
-    <div class="container-slides">
-        <div class="img-slider">
-            <img src="images/slider0.jpg" alt="">
-            <img src="images/slider0.jpg" alt="">
-            <img src="images/slider0.jpg" alt="">
+    <div class="container">
+        <div class="carousel__container">
+            <div class="carousel__slide">
+                <img src="images/slider0.jpg" alt="">
+                <img src="images/slider1.jpg" alt="">
+                <img src="images/slider2.jpg" alt="">
+            </div>
+
+            <!-- navigation -->
+            
+                <div class="btn-prev"></div>
+                <div class="btn-next"></div>
+            
+
+            <!-- indikator -->
+            <div class="carousel__indicators">
+                <span class="indicator"></span><span class="indicator"></span><span class="indicator"></span><span
+                    class="indicator"></span><span class="indicator"></span>
+            </div>
         </div>
     </div>
+
+
+    <script src="script.js"></script>
 </body>
 
 </html>
