@@ -22,7 +22,7 @@ img {
     margin: auto;
     position: relative;
     max-width: 1000px;
-    height: 500px;
+    height: fit-content;
     width: 90%;
     overflow: hidden;
     border-radius: .5rem;
@@ -83,12 +83,12 @@ img {
     transform: translateX(-50%);
     display: flex;
     justify-content: center;
-    gap: 1rem;
+    gap: .5rem;
 }
 
 .indicator {
-    width: .8rem;
-    height: .8rem;
+    width: .5em;
+    height: .5em;
     background-color: rgb(0, 255, 47);
     border-radius: 50%;
     cursor: pointer;
@@ -96,8 +96,10 @@ img {
 }
 
 .indicator.active {
-    background-color: hotpink;
+    background-color:  rgb(255, 149, 0);
+    box-shadow: 0 0 20px rgba(0, 0, 0, .5);
 }
 .indicator:hover {
     background-color: rgb(255, 247, 0);
+    
 }
