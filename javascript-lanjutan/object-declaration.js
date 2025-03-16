@@ -11,8 +11,12 @@ function Mahasiswa(nama, prodi, semester) {
         console.log(`mengulang semester ${semester}`)
     }
 
+    
+
     return mahasiswa;
 }
+
+
 
 
 let elvin = Mahasiswa("elvin", "Teknik Informatika", 5)
