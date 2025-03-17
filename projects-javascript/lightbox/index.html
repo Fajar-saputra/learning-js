@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testing </title>
+    <link rel="stylesheet" href="css/test.css">
+</head>
+<body>
+<main>
+    <div class="main__container">
+        <h2 class="section__title">LIGHTBOX IMAGES</h2>
+        <div class="box__grid">
+            <div class="box__image">
+                <img src="images/details-1.png" alt="">
+            </div>
+            <div class="box__image">
+                <img src="images/details-2.png" alt="">
+            </div>
+            <div class="box__image">
+                <img src="images/details-3.png" alt="">
+            </div>
+            <div class="box__image">
+                <img src="images/details-4.png" alt="">
+            </div>
+        </div>
+    </div>
+</main>
+
+<section class="lightbox">
+    <div class="lightbox__content">
+        <div class="lightbox__close">&times;</div>
+        <img src="images/details-1.png" alt="" class="lightbox__img">
+        <div class="lightbox__caption">
+            <div class="caption__text">e-shop</div>
+            <div class="caption__counter">1 of 4</div>
+        </div>
+
+        <div class="lightbox__controls">
+            <div class="prev__item" onclick="prevItem()">&lt;</div>
+            <div class="next__item" onclick="nextItem()">&gt;</div>
+        </div>
+    </div>
+</section>
+    
+    <script src="js/test.js"></script>
+</body>
+</html>

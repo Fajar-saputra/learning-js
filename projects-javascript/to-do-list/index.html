@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript DOM</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            display: flex;
+            height: 100vh;
+            width: 100%;
+        }
+
+        .main__container {
+            margin: auto;
+            padding: 2rem;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, .4);
+            border-radius: .5rem;
+            max-width: 500px;
+            width: 90%;
+        }
+
+        .main__content {
+            display: flex;
+            column-gap: 1rem;
+        }
+
+        h1 {
+            margin-bottom: 1rem;
+        }
+
+
+        .todo__input,
+        .todo__button {
+            padding: .5rem 1rem;
+            background-color: #f3f3f3;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            width: 100%;
+            transition: .3s;
+        }
+
+        .todo__input {
+            flex: 2;
+        }
+
+        .todo__button {
+            flex: 1;
+            background-color: rgb(146, 255, 138);
+        }
+        
+        .todo__button:hover {
+            
+            background-color: rgb(17, 255, 0);
+        }
+
+        .todo__list li {
+            list-style: none;
+            padding: 10px;
+            font-size: .8rem;
+        }
+
+        .todo__list li:nth-child(even) {
+            background-color: rgb(223, 255, 93);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main__container">
+        <h1>To Do List</h1>
+
+        <div class="main__content">
+
+            <input type="text" class="todo__input" placeholder="Tambahkan List">
+
+            <button class="todo__button">Tambah</button>
+        </div>
+
+        <ul class="todo__list"></ul>
+
+    </div>
+
+    <script>
+        const todoInput = document.querySelector('.todo__input'),
+            todoButton = document.querySelector('.todo__button'),
+            todoList = document.querySelector('.todo__list');
+
+        let todoItems = [];
+
+        function addTodoItem() {
+            const todoText = todoInput.value.trim()
+            if (todoItems !== "") {
+                todoItems.push(todoText);
+                todoInput.value = "";
+                renderTodoList()
+
+                console.log(todoText)
+            }
+        }
+
+        function renderTodoList() {
+            todoList.innerHTML = ''
+
+            todoItems.forEach((item, index) => {
+                const listItem = document.createElement('li');
+
+                listItem.textContent = item;
+
+                listItem.addEventListener('click', () => {
+                    todoItems.splice(index, 1)
+                    renderTodoList();
+                })
+                todoList.appendChild(listItem)
+            });
+        }
+
+        todoButton.addEventListener('click', addTodoItem)
+
+        renderTodoList()
+    </script>
+</body>
+
+</html>
