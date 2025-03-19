@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>setInterval and setTimeout</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            background-color: azure;
+        }
+
+        h1 {
+            font-family: monospace;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 90%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+            margin: auto;
+            padding: 2rem;
+            border-radius: .5rem;
+            background-color: #fff;
+        }
+
+        .carousel__container {
+            width: 100%;
+            /* overflow: hidden; */
+        }
+
+        .carousel__img {
+            overflow: hidden;
+            display: flex;
+            border-radius: .5rem;
+            box-shadow: 0 0 5px rgba(0, 0, 0, .3);
+            width: 100%;
+        }
+
+        .carousel__img img {
+            width: 100%;
+            background-repeat: no-repeat;
+            background-size: contain;
+            transition: all .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            /* transform: translateX(-100%); */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Leason about setInterval and setTimeout</h1>
+        <div class="carousel__container">
+            <div class="carousel__img">
+                <img src="images/img1.png" alt="" class="current">
+                <img src="images/img2.png" alt="">
+                <img src="images/img3.png" alt="">
+                <img src="images/img4.png" alt="">
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
