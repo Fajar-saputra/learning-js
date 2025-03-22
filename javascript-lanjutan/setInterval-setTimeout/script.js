@@ -1,17 +1,17 @@
 // setInterval adalah fungsi yang digunakan untuk menjalankan kode secara berulang-ulang dengan interval waktu tertentu
 // contoh
 
-let angka = 1;
-function belajarInterval() {
-    let interval = setInterval(() => {
-        console.log(`Contoh sederhana penggunaan setInterval ${angka}`);
-        angka++;
-        if (angka === 8) {
-            // clearInterval untuk memberhentikan setInterval
-            clearInterval(interval);
-        }
-    }, 1000);
-}
+// let angka = 1;
+// function belajarInterval() {
+//     let interval = setInterval(() => {
+//         console.log(`Contoh sederhana penggunaan setInterval ${angka}`);
+//         angka++;
+//         if (angka === 8) {
+//             // clearInterval untuk memberhentikan setInterval
+//             clearInterval(interval);
+//         }
+//     }, 1000);
+// }
 
 // belajarInterval();
 
@@ -20,28 +20,32 @@ function belajarInterval() {
 // }, 5000);
 
 // get element carousel
-
-let carouselImages = document.querySelectorAll(".carousel__img img");
-let intervalid;
+let carouselContainer = document.querySelector(".carousel__img");
+let images = document.querySelectorAll(".carousel__img img");
+let index = 0;
+let intervalId;
 
 function autoCarousel() {
-    let index = 0;
-
-    intervalid = setInterval(() => {
-        carouselImages[index].style.transform = `translateX(${-index * 100}%`;
-        console.log(`index sebelum ${index}`)
-        
-        if (index === 4) {
-            index = 0;
-                
-            console.log(`index sudah mencapai 3`)
-        }
-        
+    intervalId = setInterval(() => {
         index++;
-        console.log(`index sesudah ${index}`)
+
+        if (index >= images.length) {
+            index = 0;
+            console.log('sudah mencapai batas')
+            
+        }
+
+        images[index].style.transform = `translateX(${-index * 100}%)`;
+        // Geser seluruh container ke kiri berdasarkan indeks gambar
+        
+        console.log(`Index sekarang: ${index}`);
     }, 3000);
 }
 
+// Tambahkan CSS agar transisi smooth
+carouselContainer.style.transition = "transform 0.5s ease-in-out";
+
+// Jalankan carousel
 autoCarousel();
 
 // carouselSlide.style.transform = `translateX(${-currentIndex * 100}%)`;

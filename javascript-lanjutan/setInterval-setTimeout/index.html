@@ -35,8 +35,7 @@
         }
 
         .carousel__container {
-            width: 100%;
-            /* overflow: hidden; */
+            overflow: hidden;
         }
 
         .carousel__img {
@@ -45,15 +44,22 @@
             border-radius: .5rem;
             box-shadow: 0 0 5px rgba(0, 0, 0, .3);
             width: 100%;
-        }
 
+
+            display: flex;
+            /* width: 400%; */
+            /* Sesuai jumlah gambar (4) */
+        }
+        
         .carousel__img img {
+            transition: transform 0.5s ease-in-out;
             width: 100%;
             background-repeat: no-repeat;
             background-size: contain;
-            transition: all .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            /* transform: translateX(-100%); */
+            /* transition: all .3s cubic-bezier(0.175, 0.885, 0.32, 1.275); */
+            flex: 1 0 100%;
         }
+
     </style>
 </head>
 
