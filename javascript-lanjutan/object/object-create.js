@@ -1,31 +1,25 @@
-function Mobil(nama, tahun, warna) {
+function Cars(nama, tahun, warna, bahanBakar = 100) {
     this.name = nama;
     this.year = tahun;
     this.color = warna;
+    this.bahanBakar = bahanBakar;
 }
 
-Mobil.prototype.bahanBakar = function (liter) {
-    return (liter *= 10);
+Cars.prototype.tambahBesin = function (liter) {
+    const energi = liter * 10 + this.bahanBakar;
+
+    console.log(`Energi terisi : ${energi} hp`);
+
+    return energi;
 };
 
-Mobil.prototype.laju = function (laju) {
-    console.log(`laju dengan kecepatan ${laju} km/jam`);
+Cars.prototype.jalan = function (kilometer) {
+    this.bahanBakar - (kilometer*5);
+    return this.bahanBakar;
 };
 
-Mobil.prototype.sisaBensin = function () {
-    let liter = this.bahanBakar(4);
-    // const sisa = liter - jarakKm;
-    console.log(`sisa bahan bakar ${liter}`)
-}
-// Mobil.prototype.sisaBensin = function (jarakKm) {
-//     let liter = this.bahanBakar()
-//     const sisa = liter - jarakKm;
-//     console.log(`sisa bahan bakar ${sisa}`)
-// }
-
-const Pajero = new Mobil("Pajero", 2020, "black");
+const Pajero = new Cars("Pajero", 2020, "black");
 
 console.log(Pajero);
-console.log(Pajero.bahanBakar(10));
-console.log(Pajero.laju(40));
-console.log(Pajero.sisaBensin());
+console.log(Pajero.tambahBesin(2));
+console.log(Pajero.jalan(10));
