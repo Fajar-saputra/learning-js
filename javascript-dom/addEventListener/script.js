@@ -33,3 +33,11 @@ paragraf.forEach((element) => {
 });
 
 console.log(paragraf);
+
+
+//  event contoh
+// click
+// mouseenter
+// mousemove
+// keydown
+// transitioned
