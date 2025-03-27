@@ -1,20 +1,48 @@
-const elementLists = document.querySelectorAll(".test__aja li");
+document.addEventListener("DOMContentLoaded", () => {
+    const input = document.querySelector(".todo__input"),
+        addButton = document.querySelector(".todo__button"),
+        todoList = document.querySelector(".todo__list");
 
-const buttonDeletes = document.querySelector(".hapus__list");
+    // fungsi menambahkan tugas
+    function addTask() {
+        if (input.value.trim() === "") {
+            alert("Add Task please!!");
+            return;
+        }
 
+        // buat elemen li
+        const li = document.createElement("li");
+        li.classList.add("list__item-todo");
+        // buat button hapus
+        const buttonHapus = document.createElement("span");
+        buttonHapus.classList.add("hapus__list");
 
-// elementLists.forEach(element, index => {
-//     console.log(`list item : ${element}, index : ${index}`)
-// });
+        // paragraf
+        let paragraf = document.createElement("p");
+        paragraf.textContent = input.value;
 
+        //  tambahkan even listener untuk hapus tugas
+        buttonHapus.addEventListener("click", () => {
+            li.remove();
+        });
 
-let angka = [1,3,4,4,5,6]
+        li.appendChild(paragraf);
+        li.appendChild(buttonHapus);
 
-console.log(angka.Max_value)
+        todoList.appendChild(li);
 
-// <!-- <li class="list__item-todo">
-//                     <p>isi list to do</p>
-//                     <div class="buttons__list">
-//                         <span class="coret__list"></span> <span class="hapus__list"></span>
-//                     </div>
-//                 </li> -->
+        // kosongkan input setelah menambahkan tuas
+        input.value = "";
+    }
+
+    // Event listner tombol tambah
+    addButton.addEventListener("click", addTask);
+
+    // event listener untuk enter key
+    input.addEventListener("keydown", (event) => {
+        if (event.key === "enter") {
+            addTask();
+            alert('test');
+        }
+    });
+});

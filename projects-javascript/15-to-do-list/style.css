@@ -67,7 +67,7 @@ box-shadow: 0 5px 5px rgba(0, 0, 0, .4);
     box-shadow: 0 0 10px rgba(0, 0, 0, .4);
 }
 
-.list__item {
+.todo__list {
     margin-top: 1rem;
     list-style: none;
 }
@@ -120,14 +120,24 @@ box-shadow: 0 5px 5px rgba(0, 0, 0, .4);
 
 .hapus__list {
     background-color: rgb(255, 0, 0);
+    position: relative;
 }
 
-.test__aja {
-    list-style: none;
+.hapus__list::after {
+    content: "hapus list!";
+    display: none;
+    width:max-content;
+    font-size: .725rem;
+    padding: .3rem .5rem;
+    border-radius: .2rem;
+    position: absolute;
+    top: -1.7rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: hotpink;
+    transition: all .3s cubic-bezier(0.41, -0.18, 1, 0.34);
 }
 
-.test__aja li {
-    padding: 1rem 3rem;
-    background-color: rgb(192, 255, 255);
-    margin-bottom: 1rem;
+.hapus__list:hover::after{
+    display: block;
 }
