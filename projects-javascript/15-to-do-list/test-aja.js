@@ -10,26 +10,55 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        // buat elemen li
+        // buat elemen list li
         const li = document.createElement("li");
         li.classList.add("list__item-todo");
-        // buat button hapus
+
+        // bungkus
+        const buttonsList = document.createElement("div");
+        buttonsList.classList.add('buttons__list')
+
+        //  button hapus
         const buttonHapus = document.createElement("span");
         buttonHapus.classList.add("hapus__list");
+
+        //  button coret
+        const buttonCoret = document.createElement("span");
+        buttonCoret.classList.add("coret__list");
+
+        // button edit
+        const buttonEdit = document.createElement('span')
+        buttonEdit.classList.add('edit__list')
 
         // paragraf
         let paragraf = document.createElement("p");
         paragraf.textContent = input.value;
+
+        li.appendChild(paragraf);
+        buttonsList.appendChild(buttonCoret);
+        buttonsList.appendChild(buttonHapus);
+        buttonsList.appendChild(buttonEdit);
+        li.appendChild(buttonsList)
+
+        todoList.appendChild(li);
 
         //  tambahkan even listener untuk hapus tugas
         buttonHapus.addEventListener("click", () => {
             li.remove();
         });
 
-        li.appendChild(paragraf);
-        li.appendChild(buttonHapus);
+        // tambahkan event listener untuk coret tugas
+        buttonCoret.addEventListener("click", () => {
+            li.style.textDecoration = "line-through";
+        });
 
-        todoList.appendChild(li);
+        // tambahkan event listener untuk edit tugas
+        buttonEdit.addEventListener('click', () => {
+            let newText = prompt('Edit Tugas: ', paragraf.textContent);
+            if (paragraf !== null && paragraf.trim() !== '') {
+                paragraf.textContent = newText;
+            }
+        })
 
         // kosongkan input setelah menambahkan tuas
         input.value = "";
@@ -42,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
     input.addEventListener("keydown", (event) => {
         if (event.key === "enter") {
             addTask();
-            alert('test');
+            alert("test");
         }
     });
 });

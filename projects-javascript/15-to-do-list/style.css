@@ -99,7 +99,8 @@ box-shadow: 0 5px 5px rgba(0, 0, 0, .4);
 }
 
 .coret__list,
-.hapus__list {
+.hapus__list,
+.edit__list {
     width: 25px;
     height: 25px;
     border-radius: 50%;
@@ -110,21 +111,21 @@ box-shadow: 0 5px 5px rgba(0, 0, 0, .4);
 }
 
 .coret__list:hover,
-.hapus__list:hover{
+.hapus__list:hover,
+.edit__list:hover{
     box-shadow: 0 0 10px rgb(255, 67, 227);
 }
 
 .coret__list {
     background-color: rgb(0, 255, 0);
-}
-
-.hapus__list {
-    background-color: rgb(255, 0, 0);
     position: relative;
 }
 
-.hapus__list::after {
-    content: "hapus list!";
+.coret__list::after,
+.hapus__list::after,
+.edit__list::after{
+    content: "coret list!!!";
+    font-style: italic;
     display: none;
     width:max-content;
     font-size: .725rem;
@@ -134,10 +135,33 @@ box-shadow: 0 5px 5px rgba(0, 0, 0, .4);
     top: -1.7rem;
     left: 50%;
     transform: translateX(-50%);
-    background-color: hotpink;
+    background-color: rgb(105, 255, 153);
     transition: all .3s cubic-bezier(0.41, -0.18, 1, 0.34);
 }
 
-.hapus__list:hover::after{
+.hapus__list::after {
+    content: "hapus list!!!";
+    background-color: hotpink;
+}
+.edit__list::after {
+    content: "edit list!!!";
+    background-color: rgb(0, 195, 255);
+}
+
+.coret__list:hover::after,
+.hapus__list:hover::after,
+.edit__list:hover::after{
     display: block;
 }
+
+.hapus__list {
+    background-color: rgb(255, 0, 0);
+    position: relative;
+}
+.edit__list {
+    background-color: rgb(0, 255, 213);
+    position: relative;
+}
+
+
+
