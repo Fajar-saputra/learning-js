@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // paragraf
         let paragraf = document.createElement("p");
-        paragraf.textContent = input.value;
+        paragraf.textContent = task;
 
         //  button hapus
         const buttonHapus = document.createElement("span");
@@ -95,9 +95,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // event listener untuk enter key
     input.addEventListener("keypress", function (event) {
-        if (event.key === "enter") {
-            addTask();
-            alert("test");
+        if (event.key === "Enter") {
+            addTask();  
         }
     });
 
