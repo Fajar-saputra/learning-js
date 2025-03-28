@@ -1,52 +1,77 @@
-let buttonAdd = document.querySelector(".todo__button"),
-    inputUser = document.querySelector(".todo__input"),
-    hapusBtn = document.querySelector(".hapus__list"),
-    // coretBtn = document.querySelector(".coret__list"),
-    li = document.querySelector(".list__item-todo");
+document.addEventListener("DOMContentLoaded", () => {
+    const input = document.querySelector(".todo__input"),
+        addButton = document.querySelector(".todo__button"),
+        todoList = document.querySelector(".todo__list");
 
-let listItem = document.querySelector(".list__item");
-let liElement = document.createElement("li");
-let paragraf = document.createElement("p");
-let buttonsList = document.createElement("div");
-let buttonCoret = document.createElement("span");
-let buttonHapus = document.createElement("span");
+    // fungsi menambahkan tugas
+    function addTask() {
+        if (input.value.trim() === "") {
+            alert("Add Task please!!");
+            return;
+        }
 
-liElement.classList.add("list__item-todo");
-buttonsList.classList.add("buttons__list");
-buttonCoret.classList.add("coret__list");
-buttonHapus.classList.add("hapus__list");
+        // buat elemen list li
+        const li = document.createElement("li");
+        li.classList.add("list__item-todo");
 
-function crateList() {
-    console.log(listItem);
+        // bungkus
+        const buttonsList = document.createElement("div");
+        buttonsList.classList.add('buttons__list')
 
-    if (!inputUser.value) {
-        alert("Tambah kegiatan dulu!!");
-        return;
+        //  button hapus
+        const buttonHapus = document.createElement("span");
+        buttonHapus.classList.add("hapus__list");
+
+        //  button coret
+        const buttonCoret = document.createElement("span");
+        buttonCoret.classList.add("coret__list");
+
+        // button edit
+        const buttonEdit = document.createElement('span')
+        buttonEdit.classList.add('edit__list')
+
+        // paragraf
+        let paragraf = document.createElement("p");
+        paragraf.textContent = input.value;
+
+        li.appendChild(paragraf);
+        buttonsList.appendChild(buttonCoret);
+        buttonsList.appendChild(buttonHapus);
+        buttonsList.appendChild(buttonEdit);
+        li.appendChild(buttonsList)
+
+        todoList.appendChild(li);
+
+        //  tambahkan even listener untuk hapus tugas
+        buttonHapus.addEventListener("click", () => {
+            li.remove();
+        });
+
+        // tambahkan event listener untuk coret tugas
+        buttonCoret.addEventListener("click", () => {
+            li.style.textDecoration = "line-through";
+        });
+
+        // tambahkan event listener untuk edit tugas
+        buttonEdit.addEventListener('click', () => {
+            let newText = prompt('Edit Tugas: ', paragraf.textContent);
+            if (paragraf !== null && paragraf.trim() !== '') {
+                paragraf.textContent = newText;
+            }
+        })
+
+        // kosongkan input setelah menambahkan tuas
+        input.value = "";
     }
 
-    paragraf.textContent = inputUser.value;
+    // Event listner tombol tambah
+    addButton.addEventListener("click", addTask);
 
-    buttonsList.appendChild(buttonCoret);
-    buttonsList.appendChild(buttonHapus);
-
-    liElement.appendChild(paragraf);
-    liElement.appendChild(buttonsList);
-
-    listItem.appendChild(liElement);
-}
-
-let coretBtn = document.querySelectorAll(".coret__list");
-
-coretBtn.forEach((element) => {
-    element.addEventListener("click", () => {
-        li.classList.toggle("coret");
+    // event listener untuk enter key
+    input.addEventListener("keydown", (event) => {
+        if (event.key === "enter") {
+            addTask();
+            alert("test");
+        }
     });
-});
-
-// coretBtn.addEventListener('click', () => {
-//     li.classList.toggle('coret');
-// })
-
-buttonAdd.addEventListener("click", () => {
-    crateList();
 });
