@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan localStorage</title>
+</head>
+
+<body>
+    <h1>Studi kasus sederhan tentang localStorage</h1>
+
+    <script>
+        let namaUser = prompt("Your name : ")
+
+        let simpan = localStorage.setItem('namaUser', JSON.stringify(namaUser)) || [];
+
+        if (namaUser.value !== "") {
+            simpan.push(namaUser)
+        } else {
+            alert('Enter your name')
+        }
+
+        let ambil = JSON.parse(localStorage.getItem(simpan))
+
+        // ambil.forEach((nama, index) => {
+        //     console.log(`${index} ${nama}`)
+        // });
+
+        for (let i = 0; i < localStorage.length; i++) {
+            let key = localStorage.key(i);
+            let value = localStorage.getItem(key)
+            console.log(i, value)
+
+        }
+    </script>
+</body>
+
+</html>
