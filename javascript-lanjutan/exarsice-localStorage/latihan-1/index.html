@@ -8,31 +8,20 @@
 </head>
 
 <body>
-    <h1>Studi kasus sederhan tentang localStorage</h1>
+    <h1>Studi kasus sederhana tentang localStorage</h1>
 
+    
     <script>
-        let namaUser = prompt("Your name : ")
+        let userName = JSON.parse(localStorage.getItem('userName')) || []
 
-        let simpan = localStorage.setItem('namaUser', JSON.stringify(namaUser)) || [];
+        let userInput = prompt("Enter your name!!")
 
-        if (namaUser.value !== "") {
-            simpan.push(namaUser)
-        } else {
-            alert('Enter your name')
-        }
+        userName.push(userInput);
 
-        let ambil = JSON.parse(localStorage.getItem(simpan))
+        localStorage.setItem("userName", JSON.stringify(userName))
 
-        // ambil.forEach((nama, index) => {
-        //     console.log(`${index} ${nama}`)
-        // });
+        console.log("Data : ", userName)
 
-        for (let i = 0; i < localStorage.length; i++) {
-            let key = localStorage.key(i);
-            let value = localStorage.getItem(key)
-            console.log(i, value)
-
-        }
     </script>
 </body>
 

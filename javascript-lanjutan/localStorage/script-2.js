@@ -1,3 +1,4 @@
+
 // ubah objek ke dalam localStorage
 
 let data = {
