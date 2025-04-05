@@ -7,6 +7,8 @@ console.log(userName);
 console.log(userUmur);
 console.log(userHobby);
 
+save.addEventListener("click", () => {
+
 let dataUser = JSON.parse(localStorage.getItem("user")) || {};
 
 // // minta user input
@@ -32,16 +34,18 @@ let user = {
 
 // simpan
 
-save.addEventListener("click", () => {
+
     localStorage.setItem("user", JSON.stringify(user));
 
     userName.value = "";
     userUmur.value = "";
     userHobby.value = "";
-});
+
 
 if (user) {
     console.log("data tersimpan!!", user);
 } else {
     console.log("error");
 }
+
+});
