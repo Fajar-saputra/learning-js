@@ -1,51 +1,28 @@
-const userName = document.querySelector("#userName"),
-    userUmur = document.querySelector("#userUmur"),
-    userHobby = document.querySelector("#userHobby"),
-    save = document.querySelector("button");
+function saveData() {
+    let userName = document.getElementById("userName").value,
+        userUmur = parseInt(document.getElementById("userUmur").value),
+        userHobby = document.getElementById("userHobby").value
 
-console.log(userName);
-console.log(userUmur);
-console.log(userHobby);
+    let hobby = userHobby.split(",").map((item) => item.trim());
 
-save.addEventListener("click", () => {
-
-let dataUser = JSON.parse(localStorage.getItem("user")) || {};
-
-// // minta user input
-// let nama = userName.value;
-// let umur = userUmur.value;
-// let hobby = userHobby.value;
-
-// console.log(nama)
-// console.log(umur)
-// console.log(hobby)
-
-// umur = parseInt(umur);
-
-// hobby = hobby.split(",").map(item => item.trim())
-
-// // buat objek
-
-let user = {
-    nama: userName.value,
-    umur: userUmur.value,
-    hobby: userHobby.value
-};
-
-// simpan
-
+    let user = {
+        nama: userName,
+        umur: userUmur,
+        hobby: hobby,
+    };
 
     localStorage.setItem("user", JSON.stringify(user));
 
-    userName.value = "";
-    userUmur.value = "";
-    userHobby.value = "";
-
-
-if (user) {
-    console.log("data tersimpan!!", user);
-} else {
-    console.log("error");
+    alert("data berhasil disimpan!!");
 }
 
-});
+function showData() {
+    let data = JSON.parse(localStorage.getItem(user));
+    if (data) {
+        console.log('ada')
+    } else {
+        console.log("Data tidak tersimpan!!")
+    }
+}
+
+document.querySelector("#save").addEventListener('click', saveData)
