@@ -1,17 +1,9 @@
-function cobaDulu() {
-    let data = JSON.parse(localStorage.getItem(keranjangBuah)) || [];
+let angka = [1, 2, 3, 4, 5];
 
-    // localStorage.setItem("keranjangBuah", JSON.stringify(keranjangBuah))
+let liat = JSON.parse(localStorage.getItem(angka)) || []
 
-    let userInput = prompt("Tambah: ");
 
-    let tambah = userInput.trim();
+angka.push(8)
 
-    data.push(tambah);
+localStorage.setItem("angka", JSON.stringify(angka)) 
 
-    localStorage.setItem("keranjangBuah", JSON.stringify(keranjangBuah));
-
-    console.log(data);
-}
-
-cobaDulu()
