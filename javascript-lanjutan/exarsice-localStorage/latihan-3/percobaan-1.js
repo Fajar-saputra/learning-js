@@ -1,9 +1,34 @@
-let angka = [1, 2, 3, 4, 5];
+function tambahKeranjang(buah) {
+    keranjang.push(buah);
+}
 
-let liat = JSON.parse(localStorage.getItem(angka)) || []
+function hapusBuah(buah) {
+    for (let index = 0; index < keranjang.length; index++) {
+        if (buah === keranjang[index]) {
+            // keranjang.slice(index, 1);
+            delete keranjang[index];
+            console.log(`buah ${keranjang[index]} telah dihapus`);
+            return;
+        }
+    }
+}
 
+let keranjang = JSON.parse(localStorage.getItem("keranjang")) || [];
 
-angka.push(8)
+// tambahKeranjang('jambu')
+// hapusBuah("durian")
+hapusBuah("nanas");
 
-localStorage.setItem("angka", JSON.stringify(angka)) 
+localStorage.setItem("keranjang", JSON.stringify(keranjang));
 
+if (keranjang) {
+    console.log(`isi keranjang ${keranjang} : `);
+} else {
+    console.log("eror");
+}
+
+if (localStorage) {
+    console.log(localStorage);
+} else {
+    console.log("kosong");
+}

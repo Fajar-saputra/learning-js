@@ -5,10 +5,121 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Latihan 3</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 400px;
+            margin: 50px auto 0;
+            box-shadow: 0 0 5px rgba(0, 0, 0, .5);
+            padding: 1rem;
+            border-radius: .5rem;
+        }
+
+        .container-buttons {
+            display: flex;
+            flex-direction: column;
+            row-gap: .5rem;
+        }
+
+        input,
+        button {
+            padding: 0.5rem;
+            background: #fff;
+            font-size: .725rem;
+
+        }
+
+        .tambahList {
+            background-color: rgb(195, 255, 104);
+            transition: .3s all ease;
+        }
+
+        .tambahList:hover {
+            background-color: rgb(153, 255, 0);
+        }
+
+        .hapusList {
+            background-color: rgb(255, 17, 0);
+            transition: .3s all ease;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+        }
+
+        .hapusList:hover {
+            background-color: rgb(255, 196, 0);
+        }
+
+        .clearList {
+            background-color: rgb(255, 179, 217);
+            transition: .3s all ease;
+        }
+
+        .clearList:hover {
+            background-color: rgb(255, 67, 67);
+        }
+
+        ul {
+            list-style: none;
+            margin-top: 1rem;
+            display: flex;
+            flex-direction: column;
+            row-gap: .5rem;
+        }
+
+        .item {
+            text-transform: capitalize;
+            position: relative;
+            padding: .5rem 1rem;
+            box-shadow: 0 0 5px rgba(0, 0, 0, .4);
+            font-size: .825rem;
+            margin-bottom: .5rem;
+            border-radius: .3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .item::before {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 1px;
+            content: '';
+            border-left: 10px solid rgb(0, 255, 183);
+            border-top: 7px solid transparent;
+            border-bottom: 7px solid transparent;
+        }
+    </style>
 </head>
 
 <body>
-    <script src="percobaan-1.js"></script>
+
+    <div class="container">
+        <div class="container-buttons">
+            <input type="text" name="keranjang" id="inputItem" placeholder="Enter your items">
+
+            <button class="tambahList">Tambah</button>
+            <button class="clearList">Clear</button>
+            <!-- <button class="tambahList" onclick="tambahList()">Tambah</button>
+            <button class="hapusList" onclick="hapusItem()">Hapus</button>
+            <button class="clearList" onclick="hapusSemua()">Delete</button> -->
+            <!-- <span class="hapusList"></span> -->
+        </div>
+        <ul class="list-item">
+            <!-- <li class="item">jambu</li> -->
+        </ul>
+
+    </div>
+
+    <script src="percobaan-3.js"></script>
 </body>
 
 </html>
