@@ -1,7 +1,7 @@
 let randomNumber = Math.floor(Math.random() * 10) + 1;
 // let randomNumber =2;
 
-let attemps = 0;
+let attemps = 0
 
 // get element
 const starBtn = document.querySelector(".star");

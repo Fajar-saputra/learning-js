@@ -21,7 +21,7 @@ function render() {
     });
 }
 
-function createElement(element,index) {
+function createElement(element) {
     let spanElement = document.createElement("span");
     spanElement.classList.add("hapusList");
     let li = document.createElement("li");
@@ -30,13 +30,9 @@ function createElement(element,index) {
     li.textContent = element;
     li.appendChild(spanElement);
     ul.appendChild(li);
-
-
 }
 
-
-
-saveData()
+saveData();
 
 function add() {
     if (input.value.trim() === "") {
@@ -48,7 +44,7 @@ function add() {
     saveData();
     render();
 
-    // kosongkan input setelah menambahkan tuas
+    // kosongkan input setelah menambahkan input
     input.value = "";
 }
 
