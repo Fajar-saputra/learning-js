@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplikasi Cuaca Sederhana</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(45deg, #00b4d8, #0077b6);
+            color: white;
+        }
+
+        .container {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            width: 90%;
+            max-width: 450px;
+        }
+
+        .search-box {
+            margin: 1rem 0;
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        input {
+            flex: 1;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 5px;
+            outline: none;
+            font-size: 1rem;
+        }
+
+        button {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            background: #023e8a;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #03045e;
+        }
+
+        .weather-info {
+            margin-top: 1.5rem;
+        }
+
+        .error {
+            color: #ff6b6b;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .temp {
+            font-size: 3rem;
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+
+        .description {
+            text-transform: capitalize;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cek Cuaca</h1>
+        
+        <div class="search-box">
+            <input type="text" placeholder="Masukkan nama kota..." id="city-input">
+            <button onclick="getWeather()">Cari</button>
+        </div>
+
+        <div class="weather-info" id="weather-info">
+            <div class="temp" id="temperature">--°C</div>
+            <div class="description" id="description">---</div>
+            <div id="humidity">Kelembapan: --%</div>
+            <div id="wind">Angin: -- km/jam</div>
+        </div>
+
+        <div class="error" id="error">Kota tidak ditemukan!</div>
+    </div>
+
+    <script>
+        // Ganti dengan API key Anda dari OpenWeatherMap
+        const API_KEY = 'masukkan_api_key_anda_disini';
+
+        async function getWeather() {
+            const cityInput = document.getElementById('city-input');
+            const city = cityInput.value;
+
+            if (!city) return;
+
+            try {
+                const response = await fetch(
+                    `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`
+                );
+
+                if (!response.ok) {
+                    throw new Error('Kota tidak ditemukan');
+                }
+
+                const data = await response.json();
+                displayWeather(data);
+                document.getElementById('error').style.display = 'none';
+            } catch (error) {
+                document.getElementById('error').style.display = 'block';
+                console.error('Error:', error);
+            }
+        }
+
+        function displayWeather(data) {
+            const {
+                name: city,
+                main: { temp, humidity },
+                weather: [{ description }],
+                wind: { speed }
+            } = data;
+
+            document.getElementById('temperature').textContent = `${Math.round(temp)}°C`;
+            document.getElementById('description').textContent = description;
+            document.getElementById('humidity').textContent = `Kelembapan: ${humidity}%`;
+            document.getElementById('wind').textContent = `Angin: ${Math.round(speed * 3.6)} km/jam`;
+        }
+
+        // Event listener untuk tombol Enter
+        document.getElementById('city-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                getWeather();
+            }
+        });
+    </script>
+</body>
+</html>

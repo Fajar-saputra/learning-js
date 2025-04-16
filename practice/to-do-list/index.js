@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
         ul.appendChild(li)
     }
 
-    function tamil() {
+    function tampil() {
         const listTasks = tasks;
 
         tasks.array.forEach(element => {

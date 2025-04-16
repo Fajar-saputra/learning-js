@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan 5</title>
+
+    <style>
+        body {
+            background-color: #fff;
+        }
+
+        button {
+            background-color: #fff;
+            padding: .8rem 2rem;
+            transition: .3s ease;
+            border-radius: .5rem;
+        }
+
+        button:hover {
+            background-color: rgb(234, 234, 234);
+        }
+
+        .buttons {
+            display: flex;
+            gap: 1rem;
+        }
+    </style>
+
+</head>
+
+<body>
+    <h1>Simpan Preferensi Warna Latar Belakang</h1>
+    <div class="buttons">
+        <button onclick="setColor('aqua')">Aqua</button>
+        <button onclick="setColor('hotpink')">Hotpink</button>
+        <button onclick="setColor('orange')">Orange</button>
+    </div>
+    <script src="index.js"></script>
+</body>
+
+</html>
