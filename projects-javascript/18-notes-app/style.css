@@ -42,8 +42,24 @@
     box-shadow: 0 0 3px rgba(0, 0, 0, .3);
 }
 
-.note-title {
+/* .note-title {
+    } */
+
+.heading-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 1rem;
+}
+.heading-card .bx {
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: .4rem;
+    border-radius: 50%;
+}
+
+.heading-card .bx:hover {
+    background-color: #fff;
 }
 
 .note-list {
@@ -105,9 +121,6 @@
     background-color: rgb(254, 98, 98);
 }
 
-
-
-
 .note-complete:hover::after,
 .note-delete:hover::after {
     opacity: 1;
@@ -116,8 +129,9 @@
 /* Floating Action Buttons */
 .floating-actions {
     position: absolute;
-    top: 3rem;
-    right: 0;
+    top: 50%;
+    right: 10%;
+    transform: translateY(-50%);
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -137,7 +151,8 @@
     position: relative;
 }
 
-.action-add::after, .action-clear::after {
+.action-add::after,
+.action-clear::after {
     content: 'Add New Note';
     display: block;
     position: absolute;
