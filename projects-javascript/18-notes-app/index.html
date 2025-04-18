@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notes App</title>
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="app-container">
+        <h1 class="app-title">Notes App</h1>
+
+        <div class="notes-wrapper">
+
+            <div class="note-card">
+                <h3 class="note-title">Judul</h3>
+                <ul class="note-list">
+                    <li class="note-item">
+                        belajar
+                        <span class="note-actions">
+                            <i class='bx bx-task note-complete'></i>
+                            <i class='bx bx-task-x note-delete'></i>
+                        </span>
+                    </li>
+                    <!-- lainnya -->
+                </ul>
+            </div>
+
+            <!-- Tambah note-card lain di sini -->
+
+            <div class="floating-actions">
+                <i class='bx bx-book-add action-add'></i>
+                <i class='bx bx-message-alt-x action-clear'></i>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
