@@ -1,0 +1,62 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.container {
+    max-width: 800px;
+    width: 90%;
+    margin: 2rem auto 0 ;
+    border: 3px solid rebeccapurple;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.card-note{
+    flex: 1;
+    border: 2px solid yellowgreen;
+    padding: 1rem;
+}
+
+
+
+ul, li ,h1, input {
+    margin-bottom: .5rem;
+}
+
+input, button {
+    padding: .5rem 1rem;
+    background-color: #fff;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    box-shadow: 0 0 4px rgba(0, 0, 0, .4);
+}
+
+button {
+    padding: .4rem 1rem;
+}
+
+.bx {
+    cursor: pointer;
+}
+
+
+.itemList{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+}
+
+.itemList.completed {
+    text-decoration: line-through;
+    color: #888; /* Contoh warna teks saat dicoret */
+  }
+
+  .btnNew {
+    margin: 3rem 0 0 3rem  ;
+  }
