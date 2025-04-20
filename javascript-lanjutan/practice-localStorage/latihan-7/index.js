@@ -31,7 +31,7 @@ function addNewNoteToDOM(noteObject) {
 
     // Mengatur innerHTML kartu catatan menggunakan template literal, termasuk judul, input, daftar tugas, dan tombol tambah
     newNoteCard.innerHTML = `
-        <h1>${noteObject.title}</h1>
+        <h1 class="title">${noteObject.title}<i class='bx bx-x-circle btnRemove'></i></h1>
         <input type="text" placeholder="enter your task" class="note-input">
         <ul class="list" data-note-id="${noteObject.id}"></ul>
         <button class="add-note-task" data-note-id="${noteObject.id}">add</button>
@@ -182,6 +182,7 @@ function editNoteTask(noteId, taskIndexToEdit, newText, listItemToEdit) {
         }
     }
 }
+
 
 // Fungsi untuk menambahkan event listeners ke container untuk menangani interaksi dengan catatan
 function addNoteEventListeners() {

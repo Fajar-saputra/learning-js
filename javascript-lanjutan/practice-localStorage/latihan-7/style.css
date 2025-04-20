@@ -4,10 +4,21 @@
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
 }
+
+:root {
+    --yellow: #E6B905;
+    --green: #6FD262;
+    --pink: #EA86C2;
+    --purple: #C78EFF;
+    --blue: #5AC0E7;
+}
+
+
 .container {
     max-width: 800px;
     width: 90%;
-    margin: 2rem auto 0 ;
+    min-height: 200px;
+    margin: 2rem auto 0;
     border: 3px solid rebeccapurple;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -15,19 +26,22 @@
     padding: 1rem;
 }
 
-.card-note{
+.card-note {
     flex: 1;
-    border: 2px solid yellowgreen;
     padding: 1rem;
 }
 
 
 
-ul, li ,h1, input {
+ul,
+li,
+h1,
+input {
     margin-bottom: .5rem;
 }
 
-input, button {
+input,
+button {
     padding: .5rem 1rem;
     background-color: #fff;
     cursor: pointer;
@@ -45,7 +59,7 @@ button {
 }
 
 
-.itemList{
+.itemList {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -54,9 +68,41 @@ button {
 
 .itemList.completed {
     text-decoration: line-through;
-    color: #888; /* Contoh warna teks saat dicoret */
-  }
+    /* Contoh warna teks saat dicoret */
+    color: #888;
+}
 
-  .btnNew {
-    margin: 3rem 0 0 3rem  ;
-  }
+.btnNew {
+    margin: 3rem 0 0 3rem;
+}
+
+.title {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btnRemove {
+    font-size: 1.8rem;
+}
+
+[data-set-color="yellow"] {
+    background-color: var(--yellow);
+}
+
+[data-set-color="blue"] {
+    background-color: var(--blue);
+}
+
+[data-set-color="green"] {
+    background-color: var(--green);
+}
+
+[data-set-color="purple"] {
+    background-color: var(--purple);
+}
+
+[data-set-color="pink"] {
+    background-color: var(--pink);
+}
