@@ -106,13 +106,14 @@ function addNoteEventListeners() {
         const addButton = event.target.closest(".add");
 
         if (addButton) {
-            console.log(
-                `testing addNoteEventListeners ${addButton}`
-            );
+            const noteId = addButton.dataset.noteId;
             
+            console.log(noteId)
         }
     });
 }
+
+
 
 renderAllNotes();
 
