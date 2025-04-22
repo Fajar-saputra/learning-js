@@ -15,7 +15,7 @@
 
 
 .container {
-    max-width: 800px;
+    max-width: 900px;
     width: 90%;
     min-height: 200px;
     margin: 2rem auto 0;
@@ -27,7 +27,6 @@
 }
 
 .card-note {
-    flex: 1;
     padding: 1rem;
 }
 
