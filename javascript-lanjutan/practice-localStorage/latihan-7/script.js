@@ -1,121 +1,71 @@
+// Mendapatkan referensi ke elemen container tempat semua catatan akan ditampilkan
 const container = document.querySelector(".container");
-const buttonNewNote = document.querySelector(".btnNew");
+// Mendapatkan referensi ke tombol "New" untuk membuat catatan baru
+const btnNewNote = document.querySelector(".btnNew");
 
 function saveNotes(notes) {
-    localStorage.setItem("NotesData", JSON.stringify(notes));
+    localStorage.setItem("notesData", JSON.stringify(notes));
 }
 
 function getNotes() {
     try {
-        const notesData = localStorage.getItem("NotesData");
-        return notesData ? JSON.parse(notesData) : [];
+        const storedNotes = localStorage.getItem("notesData");
+        return storedNotes ? JSON.parse(storedNotes) : [];
     } catch (error) {
-        console.error("Data kosong / rusak ", error);
+        console.error("Error getting notes from localStorage:", error);
         return [];
     }
 }
 
-// Membuat elemen DOM untuk catatan baru
-function addNewNoteDom(noteData) {
-    const noteCard = document.createElement("div");
-    noteCard.classList.add("card-note");
-    noteCard.style.backgroundColor = noteData.backgroundColor; // Setel warna latar belakang langsung
+// functoin untuk membuat
+function createCardNotes(newNote) {
+    const cardNotes = document.createElement("div");
+    cardNotes.classList.add("card-note");
+    cardNotes.setAttribute("data-set-color", backgroundColor());
 
-    noteCard.innerHTML = `
-        <h1>${noteData.title}</h1>
-        <input type="text" class="note-input" placeholder="Enter your task">
-        <ul class="task-list" data-note-id="${noteData.id}">
-            ${renderTasks(noteData.tasks)}
-        </ul>
-        <button class="add-note-task" data-note-id="${noteData.id}">Add Task</button>
-    `;
+    cardNotes.innerHTML = ` <h1 class="title">${newNote.title}<i class='bx bx-x-circle btnRemove'></i></h1>
+                            <input type="text" placeholder="enter your task" class="note-input">
+                            <ul class="list" data-note-id="${newNote.id}"></ul>
+                            <button class="add-note-task" data-note-id="${newNote.id}">add</button>
+`;
+    
+    container.appendChild(cardNotes)
 
-    container.appendChild(noteCard);
+    // fungsi render tasks
+    // renderNoteTasks(document.querySelector('list'), newNote.tasks)
 }
 
-// Menampilkan tugas-tugas dalam catatan
-function renderTasks(tasks) {
-    return tasks.map(task => `<li>${task}</li>`).join('');
+
+function  backgroundColor() {
+    const colors = ["yellow", "green", "pink", "purple", "blue"];
+    const random = Math.floor(Math.random() * colors.length); 
+    return colors[random];
 }
 
-// Menambahkan catatan baru
-function addNewNote() {
-    const title = prompt("Enter your note title!");
-    const color = backgroundColor();
+function addNewCardNotes() {
+    const title = prompt("Enter your title!!");
 
     if (title !== null && title.trim() !== "") {
         const newNote = {
             id: Date.now(),
-            title: title,
+            title: title.trim(),
             tasks: [],
-            backgroundColor: color,
+            backgroundColor: backgroundColor(),
         };
 
         const notes = getNotes();
+
         notes.push(newNote);
+
         saveNotes(notes);
-        addNewNoteDom(newNote);
+
+        createCardNotes(notes);
     } else {
-        console.log("Error: Judul catatan tidak boleh kosong.");
+        alert("Please!! enter your title");
     }
 }
 
-// Menghasilkan warna latar belakang acak
-function backgroundColor() {
-    const colors = ["yellow", "green", "pink", "purple", "blue"];
-    const randomIndex = Math.floor(Math.random() * colors.length);
-    return colors[randomIndex];
-}
+btnNewNote.addEventListener('click', addNewCardNotes)
 
-// Merender semua catatan dari localStorage
-function renderAllNotes() {
-    container.innerHTML = "";
-    const allNotes = getNotes();
-    allNotes.forEach(note => addNewNoteDom(note));
-    addNoteEventListeners(); // Pastikan event listeners ditambahkan setelah elemen DOM ada
-}
 
-// Menambahkan tugas ke dalam catatan
-function addNoteTask(noteId, taskText) {
-    const notes = getNotes();
-    const noteIndex = notes.findIndex(note => note.id === parseInt(noteId));
-
-    if (noteIndex !== -1) {
-        notes[noteIndex].tasks.push(taskText);
-        saveNotes(notes);
-
-        // Setelah menambahkan tugas, render ulang daftar tugas di catatan yang sesuai
-        const taskList = container.querySelector(`.task-list[data-note-id="${noteId}"]`);
-        if (taskList) {
-            taskList.innerHTML = renderTasks(notes[noteIndex].tasks);
-        }
-    } else {
-        console.error("Error: Catatan dengan ID tersebut tidak ditemukan.");
-    }
-}
-
-// Menambahkan event listeners untuk tombol "Add Task"
-function addNoteEventListeners() {
-    container.addEventListener("click", (event) => {
-        const addButton = event.target.closest(".add-note-task");
-        if (addButton) {
-            const noteId = addButton.dataset.noteId;
-            const inputElement = addButton.parentNode.querySelector(".note-input");
-            const taskText = inputElement.value.trim();
-
-            console.log(noteId)
-
-            if (taskText !== "") {
-                addNoteTask(noteId, taskText);
-                inputElement.value = ""; // Bersihkan input setelah menambahkan tugas
-            } else {
-                alert("Enter your task for this note!");
-            }
-        }
-    });
-}
-
-buttonNewNote.addEventListener("click", addNewNote);
-renderAllNotes();
-
-console.table(localStorage);
+console.log(getNotes());

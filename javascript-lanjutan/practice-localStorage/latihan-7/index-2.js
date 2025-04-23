@@ -28,11 +28,10 @@ function addNewNoteToDOM(noteObject) {
     // Membuat elemen div baru untuk menampung satu catatan
     const newNoteCard = document.createElement("div");
     newNoteCard.classList.add("card-note"); // Menambahkan class untuk styling
-    newNoteCard.setAttribute("data-set-color", noteObject.backgroundColor);
 
     // Mengatur innerHTML kartu catatan menggunakan template literal, termasuk judul, input, daftar tugas, dan tombol tambah
     newNoteCard.innerHTML = `
-        <h1 class="title">${noteObject.title}<i class='bx bx-x-circle btnRemove'></i></h1>
+        <h1>${noteObject.title}</h1>
         <input type="text" placeholder="enter your task" class="note-input">
         <ul class="list" data-note-id="${noteObject.id}"></ul>
         <button class="add-note-task" data-note-id="${noteObject.id}">add</button>
@@ -55,7 +54,6 @@ function addNewNote() {
             id: Date.now(),
             title: title.trim(),
             tasks: [],
-            backgroundColor: backgroundColor(),
         };
 
         // Mendapatkan daftar catatan yang sudah ada
@@ -70,13 +68,6 @@ function addNewNote() {
         // Jika judul tidak valid, log pesan ke konsol
         console.log("Gagal menambahkan note baru (judul tidak valid).");
     }
-}
-
-// Menghasilkan warna latar belakang acak
-function backgroundColor() {
-    const colors = ["yellow", "green", "pink", "purple", "blue"];
-    const randomIndex = Math.floor(Math.random() * colors.length);
-    return colors[randomIndex];
 }
 
 // Fungsi untuk merender semua catatan yang ada dari localStorage ke DOM
@@ -299,5 +290,3 @@ btnNewNote.addEventListener("click", addNewNote);
 
 // Memanggil fungsi renderAllNotes saat halaman dimuat untuk menampilkan catatan yang sudah ada
 renderAllNotes();
-
-console.log(localStorage.getItem("notesData"));
