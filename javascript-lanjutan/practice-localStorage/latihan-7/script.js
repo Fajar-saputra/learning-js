@@ -35,6 +35,16 @@ function createCardNotes(newNote) {
     // renderNoteTasks(document.querySelector('list'), newNote.tasks)
 }
 
+function renderAllNotes() {
+    container.innerHTML = ""
+
+    const notes = getNotes()
+
+    notes.forEach(note => {
+        createCardNotes(note)
+    });
+}
+
 
 function  backgroundColor() {
     const colors = ["yellow", "green", "pink", "purple", "blue"];
@@ -59,13 +69,20 @@ function addNewCardNotes() {
 
         saveNotes(notes);
 
-        createCardNotes(notes);
+        createCardNotes(newNote);
     } else {
         alert("Please!! enter your title");
     }
 }
 
+function  addTasks(noteId, text) {
+    const notes = getNotes()
+
+    const indexNotes = notes.forEach(note => notes.findIndex());
+}
+
 btnNewNote.addEventListener('click', addNewCardNotes)
 
+window.onload = renderAllNotes()
 
 console.log(getNotes());
