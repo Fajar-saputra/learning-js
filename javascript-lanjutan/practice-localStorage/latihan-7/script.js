@@ -9,80 +9,136 @@ function saveNotes(notes) {
 
 function getNotes() {
     try {
-        const storedNotes = localStorage.getItem("notesData");
-        return storedNotes ? JSON.parse(storedNotes) : [];
+        const notes = localStorage.getItem("notesData");
+        return notes ? JSON.parse(notes) : [];
     } catch (error) {
-        console.error("Error getting notes from localStorage:", error);
+        console.log("gagal ,", error);
         return [];
     }
 }
 
-// functoin untuk membuat
-function createCardNotes(newNote) {
-    const cardNotes = document.createElement("div");
-    cardNotes.classList.add("card-note");
-    cardNotes.setAttribute("data-set-color", backgroundColor());
-
-    cardNotes.innerHTML = ` <h1 class="title">${newNote.title}<i class='bx bx-x-circle btnRemove'></i></h1>
-                            <input type="text" placeholder="enter your task" class="note-input">
-                            <ul class="list" data-note-id="${newNote.id}"></ul>
-                            <button class="add-note-task" data-note-id="${newNote.id}">add</button>
-`;
-    
-    container.appendChild(cardNotes)
-
-    // fungsi render tasks
-    // renderNoteTasks(document.querySelector('list'), newNote.tasks)
-}
-
 function renderAllNotes() {
-    container.innerHTML = ""
+    container.innerHTML = "";
 
-    const notes = getNotes()
+    const notes = getNotes();
 
-    notes.forEach(note => {
-        createCardNotes(note)
+    // notes? notes.forEach(note => createElementDOM(note)) : console.log('data kosong');
+
+    notes.forEach((note) => {
+        createElementDOM(note);
     });
+
+    addEventListenerDOM();
 }
 
+function createElementDOM(note) {
+    const noteCard = document.createElement("div");
+    noteCard.classList.add("card-note");
+    noteCard.setAttribute("data-set-color", note.backgroundColor);
 
-function  backgroundColor() {
+    noteCard.innerHTML = `  <h1>${note.title}</h1>
+                            <input type="text" placeholder="enter your task" class="note-input">
+                            <ul class="list" data-note-id="${note.id}"></ul>
+                            <button class="add-note-task" data-note-id="${note.id}">add</button>`;
+
+    container.appendChild(noteCard);
+
+    renderAllTasks(noteCard.querySelector(".list"), note.tasks);
+}
+
+function backgroundColor() {
     const colors = ["yellow", "green", "pink", "purple", "blue"];
-    const random = Math.floor(Math.random() * colors.length); 
-    return colors[random];
+    const randomIndex = Math.floor(Math.random() * colors.length);
+    return colors[randomIndex];
 }
 
-function addNewCardNotes() {
-    const title = prompt("Enter your title!!");
+function addNewNotes() {
+    const titleNote = prompt("Enter your title!");
 
-    if (title !== null && title.trim() !== "") {
-        const newNote = {
+    const color = backgroundColor();
+
+    if (titleNote !== null && titleNote.trim !== "") {
+        const note = {
             id: Date.now(),
-            title: title.trim(),
+            title: titleNote.trim(),
             tasks: [],
-            backgroundColor: backgroundColor(),
+            backgroundColor: color,
         };
 
-        const notes = getNotes();
+        const storedNotes = getNotes();
 
-        notes.push(newNote);
+        storedNotes.push(note);
 
-        saveNotes(notes);
+        saveNotes(storedNotes);
 
-        createCardNotes(newNote);
+        createElementDOM(note);
     } else {
-        alert("Please!! enter your title");
+        alert("Please Enter your title!");
     }
 }
 
-function  addTasks(noteId, text) {
-    const notes = getNotes()
+function addNewTasks(noteId, taskContent) {
+    const notes = getNotes();
 
-    const indexNotes = notes.forEach(note => notes.findIndex());
+    const noteIndex = notes.findIndex((note) => note.id === parseInt(noteId));
+
+    console.log(noteIndex);
+
+    if (noteIndex !== -1) {
+        notes[noteIndex].tasks.push(taskContent);
+
+        saveNotes(notes);
+
+        const noteCard = container.querySelector(`[data-note-id="${noteId}"]`).closest(".card-note");
+        if (noteCard) {
+            const listItem = noteCard.querySelector(".list");
+
+            renderAllTasks(listItem, notes[noteIndex].tasks);
+
+            const input = noteCard.querySelector(".note-input");
+            input.value = "";
+        } else {
+            console.log("eror");
+        }
+    }
 }
 
-btnNewNote.addEventListener('click', addNewCardNotes)
+function renderAllTasks(list, tasks) {
+    list.innerHTML = "";
 
-window.onload = renderAllNotes()
+    tasks.forEach((task, index) => {
+        const li = document.createElement("li");
+        li.classList.add("itemList");
+
+        li.innerHTML = `<span class="task-text" data-task-index="${index}">${task}</span>
+        <div class="buttons">
+            <i class='bx bx-check btnComplete'></i>
+            <i class='bx bx-message-alt-minus btnDelete'></i>
+        </div>`;
+
+        list.appendChild(li);
+    });
+}
+
+function addEventListenerDOM() {
+    container.addEventListener("click", (event) => {
+        const addButton = event.target.closest(".add-note-task");
+        if (addButton) {
+            const noteId = addButton.dataset.noteId;
+            const inputElement = addButton.parentNode.querySelector(".note-input");
+            const text = inputElement.value.trim();
+
+            if (text !== "") {
+                addNewTasks(noteId, text);
+            } else {
+                alert("Enter your tasks!");
+            }
+        }
+    });
+}
+
+btnNewNote.addEventListener("click", addNewNotes);
+
+renderAllNotes();
 
 console.log(getNotes());
