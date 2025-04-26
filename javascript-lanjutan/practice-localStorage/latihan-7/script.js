@@ -22,11 +22,11 @@ function renderAllNotes() {
 
     const notes = getNotes();
 
-    // notes? notes.forEach(note => createElementDOM(note)) : console.log('data kosong');
+    notes.forEach((note) => createElementDOM(note));
 
-    notes.forEach((note) => {
-        createElementDOM(note);
-    });
+    // notes.forEach((note) => {
+    //     createElementDOM(note);
+    // });
 
     addEventListenerDOM();
 }
@@ -133,6 +133,26 @@ function addEventListenerDOM() {
             } else {
                 alert("Enter your tasks!");
             }
+        }
+
+        // Menangani klik pada tombol "delete" tugas
+        const deleteButton = event.target.closest(".btnDelete");
+        if (deleteButton) {
+            const listItem = deleteButton.closest(".itemList");
+            const taskList = listItem.closest(".list");
+            const noteId = taskList.dataset.noteId;
+            const taskTextToRemove = listItem.querySelector(".task-text").textContent.trim();
+            removeNoteTask(noteId, taskTextToRemove, listItem);
+        }
+
+        // Menangani klik pada tombol "complete" tugas
+        const completeButton = event.target.closest(".btnComplete");
+        if (completeButton) {
+            const listItem = completeButton.closest(".itemList");
+            listItem.classList.toggle("completed");
+            const taskList = listItem.closest(".list");
+            const noteId = taskList.dataset.noteId;
+            updateNoteTaskCompletion(noteId, listItem.querySelector(".task-text").textContent.trim(), listItem.classList.contains("completed"));
         }
     });
 }
