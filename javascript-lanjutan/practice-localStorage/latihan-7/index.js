@@ -214,8 +214,8 @@ function addNoteEventListeners() {
         if (deleteButton) {
             const listItem = deleteButton.closest(".itemList");
             const taskList = listItem.closest(".list");
-            const noteId = taskList.dataset.noteId;
             const taskTextToRemove = listItem.querySelector(".task-text").textContent.trim();
+            const noteId = taskList.dataset.noteId;
             removeNoteTask(noteId, taskTextToRemove, listItem);
         }
 

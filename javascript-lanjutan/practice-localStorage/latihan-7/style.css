@@ -63,7 +63,10 @@ button {
     justify-content: space-between;
     align-items: center;
     list-style: none;
+    padding: .5rem;
+    background-color: rgba(255, 241, 241, 0.4);
 }
+
 
 .itemList.completed {
     text-decoration: line-through;
@@ -86,22 +89,22 @@ button {
     font-size: 1.8rem;
 }
 
-[data-set-color="yellow"] {
+[data-note-color="yellow"] {
     background-color: var(--yellow);
 }
 
-[data-set-color="blue"] {
+[data-note-color="blue"] {
     background-color: var(--blue);
 }
 
-[data-set-color="green"] {
+[data-note-color="green"] {
     background-color: var(--green);
 }
 
-[data-set-color="purple"] {
+[data-note-color="purple"] {
     background-color: var(--purple);
 }
 
-[data-set-color="pink"] {
+[data-note-color="pink"] {
     background-color: var(--pink);
 }
