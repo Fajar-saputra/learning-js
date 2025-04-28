@@ -33,7 +33,7 @@ function createNoteCard(notes) {
     container.appendChild(newNoteCard);
 
     // rendering tasks
-    renderAllTasks(newNoteCard.querySelector(".list"), notes.tasks)
+    renderNoteTasks(newNoteCard.querySelector(".list"), notes.tasks);
 }
 
 function addNewNote() {
@@ -96,7 +96,7 @@ function renderNoteTasks(itemList, tasks) {
                              <i class='bx bx-message-alt-minus btnDelete'></i>
                          </div>`;
 
-        list.appendChild(li);
+        itemList.appendChild(li);
     });
 }
 
@@ -116,17 +116,28 @@ function renderAllNotes() {
     addEventListenerDOM();
 }
 
-function renderAllTasks(elemenList, tasks) {
-    elemenList.innerHTML = "";
+function noteTaskComplete(noteId, taskText, isCompleted) {
+    const notes = getNotes();
 
-    tasks.forEach((task) => {
-        const li = document.createElement('li');
-        li.classList.add("itemList");
-        li.textContent = task;
+    // cari index pada card note
+    const noteIndex = notes.findIndex(note => note.id === parseInt(noteId))
 
-        elemenList.appendChild(li)
+    if (noteIndex !== -1) {
+        // cari index pada array tasks
+        const taskIndex = notes[noteIndex].tasks.indexOf(taskText);
+        
+        if (taskIndex !== -1) {
+            console.log(`Task "${taskText}" in note ${noteId} is now ${isCompleted ? "completed" : "not completed"}`);
+            saveNotes(notes); 
+        }
+        
+    }
+}
 
-    })
+function noteTaskRemove(noteId, taskText) {
+    const notes = getNotes()
+
+
 }
 
 function addEventListenerDOM() {
@@ -137,16 +148,31 @@ function addEventListenerDOM() {
             const noteId = addbtn.dataset.noteId;
             const inputTask = addbtn.parentNode.querySelector(".note-input");
             const text = inputTask.value.trim();
-            console.log("ini note id : ", noteId);
-            console.log("ini add button : ", addbtn);
-            console.log("ini input : ", text);
             if (text !== "") {
                 addNewTask(noteId, text);
             } else {
-                console.log("gagal menambahkan");
+                alert("Enter your task!");
             }
         }
-        // console.log(event.target);
+
+        const completeBtn = event.target.closest(".btnComplete");
+        if (completeBtn) {
+            const list = completeBtn.closest(".list");
+            const noteId = list.dataset.noteId;
+            const itemList = completeBtn.closest(".itemList")
+            itemList.classList.toggle("completed");
+
+            noteTaskComplete(noteId, itemList.querySelector(".task-text").textContent.trim(), itemList.classList.contains("completed"));
+        }
+    
+        const removeBtn = event.target.closest(".btnDelete");
+        if (removeBtn) {
+            const list = completeBtn.closest(".list");
+            const noteId = list.dataset.noteId;
+
+
+            noteTaskRemove(noteId, list)
+        }
     });
 }
 

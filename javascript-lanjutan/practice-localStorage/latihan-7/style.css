@@ -68,10 +68,10 @@ button {
 }
 
 
-.itemList.completed {
+.itemList.completed .task-text{
     text-decoration: line-through;
-    /* Contoh warna teks saat dicoret */
     color: #888;
+    width: fit-content;
 }
 
 .btnNew {

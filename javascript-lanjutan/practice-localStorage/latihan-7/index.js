@@ -6,14 +6,14 @@ const btnNewNote = document.querySelector(".btnNew");
 // Fungsi untuk menyimpan array catatan ke localStorage
 function saveNotes(notes) {
     // Menggunakan kunci "notesData" untuk menyimpan array JSON dari objek catatan
-    localStorage.setItem("notesData", JSON.stringify(notes));
+    localStorage.setItem("notes", JSON.stringify(notes));
 }
 
 // Fungsi untuk mengambil array catatan dari localStorage
 function getNotes() {
     try {
-        // Mengambil string JSON dari localStorage menggunakan kunci "notesData"
-        const storedNotes = localStorage.getItem("notesData");
+        // Mengambil string JSON dari localStorage menggunakan kunci "notes"
+        const storedNotes = localStorage.getItem("notes");
         // Jika ada data, parse menjadi array JavaScript; jika tidak, kembalikan array kosong
         return storedNotes ? JSON.parse(storedNotes) : [];
     } catch (error) {
@@ -300,4 +300,4 @@ btnNewNote.addEventListener("click", addNewNote);
 // Memanggil fungsi renderAllNotes saat halaman dimuat untuk menampilkan catatan yang sudah ada
 renderAllNotes();
 
-console.log(localStorage.getItem("notesData"));
+console.log(localStorage.getItem("notes"));
