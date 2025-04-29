@@ -210,13 +210,28 @@ function addNoteEventListeners() {
         }
 
         // Menangani klik pada tombol "delete" tugas
-        const deleteButton = event.target.closest(".btnDelete");
-        if (deleteButton) {
-            const listItem = deleteButton.closest(".itemList");
+        // const deleteButton = event.target.closest(".btnDelete");
+        // if (deleteButton) {
+        //     const listItem = deleteButton.closest(".itemList");
+        //     const taskList = listItem.closest(".list");
+        //     const taskTextToRemove = listItem.querySelector(".task-text").textContent.trim();
+        //     const noteId = taskList.dataset.noteId;
+        //     removeNoteTask(noteId, taskTextToRemove, listItem);
+        // }
+
+        // pembaharuan untuk diatas
+        const removeBtn = event.target.closest(".btnDelete");
+        if (removeBtn) {
+            const listItem = removeBtn.closest(".itemList");
             const taskList = listItem.closest(".list");
-            const taskTextToRemove = listItem.querySelector(".task-text").textContent.trim();
-            const noteId = taskList.dataset.noteId;
-            removeNoteTask(noteId, taskTextToRemove, listItem);
+            if (taskList) {
+                // Add a check to ensure taskList is not null
+                const noteId = taskList.dataset.noteId;
+                const taskTextToRemove = listItem.querySelector(".task-text").textContent.trim();
+                removeNoteTask(noteId, taskTextToRemove, listItem);
+            } else {
+                console.error('Could not find an element with the class ".list"');
+            }
         }
 
         // Menangani klik pada tombol "complete" tugas

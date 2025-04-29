@@ -120,24 +120,35 @@ function noteTaskComplete(noteId, taskText, isCompleted) {
     const notes = getNotes();
 
     // cari index pada card note
-    const noteIndex = notes.findIndex(note => note.id === parseInt(noteId))
+    const noteIndex = notes.findIndex((note) => note.id === parseInt(noteId));
 
     if (noteIndex !== -1) {
         // cari index pada array tasks
         const taskIndex = notes[noteIndex].tasks.indexOf(taskText);
-        
+
         if (taskIndex !== -1) {
             console.log(`Task "${taskText}" in note ${noteId} is now ${isCompleted ? "completed" : "not completed"}`);
-            saveNotes(notes); 
+            saveNotes(notes);
         }
-        
     }
 }
 
-function noteTaskRemove(noteId, taskText) {
-    const notes = getNotes()
+function removeNoteTask(noteId, taskText, listItem) {
+    const notes = getNotes();
 
+    const noteIndex = notes.findIndex((note) => note.id === parseInt(noteId));
 
+    console.log("Ini index note card : ", noteIndex);
+
+    if (noteIndex !== -1) {
+        notes[noteIndex].tasks = notes[noteIndex].tasks.filter((task) => task !== taskText);
+
+        saveNotes(notes);
+
+        listItem.remove();
+
+        console.log(`berhasil dihapus ${listItem} pada index card ${noteIndex}`);
+    }
 }
 
 function addEventListenerDOM() {
@@ -159,20 +170,27 @@ function addEventListenerDOM() {
         if (completeBtn) {
             const list = completeBtn.closest(".list");
             const noteId = list.dataset.noteId;
-            const itemList = completeBtn.closest(".itemList")
+            const itemList = completeBtn.closest(".itemList");
             itemList.classList.toggle("completed");
 
             noteTaskComplete(noteId, itemList.querySelector(".task-text").textContent.trim(), itemList.classList.contains("completed"));
         }
-    
+
         const removeBtn = event.target.closest(".btnDelete");
         if (removeBtn) {
-            const list = completeBtn.closest(".list");
-            const noteId = list.dataset.noteId;
-
-
-            noteTaskRemove(noteId, list)
+            const listItem = removeBtn.closest(".itemList");
+            const taskList = listItem.closest(".list");
+            if (taskList) {
+                // Add a check to ensure taskList is not null
+                const noteId = taskList.dataset.noteId;
+                const taskTextToRemove = listItem.querySelector(".task-text").textContent.trim();
+                removeNoteTask(noteId, taskTextToRemove, listItem);
+            } else {
+                console.error('Could not find an element with the class ".list"');
+            }
         }
+
+        
     });
 }
 
