@@ -29,11 +29,11 @@ function createNoteCard(notes) {
                             <input type="text" placeholder="enter your task" class="note-input">
                             <ul class="list" data-note-id="${notes.id}"></ul>
                             <button class="add-note-task" data-note-id="${notes.id}">add</button>`;
-    
-    container.appendChild(noteCard)
+
+    container.appendChild(noteCard);
 
     // render tasks
-    renderAllTasks(noteCard.querySelector(".list"), notes.tasks)
+    renderAllTasks(noteCard.querySelector(".list"), notes.tasks);
 }
 
 // tambah note card baru
@@ -81,9 +81,9 @@ function renderAllNotes() {
 function renderAllTasks(list, tasks) {
     list.innerHTML = "";
 
-    tasks.forEach((task,index) => {
-        const li = document.createElement("li")
-        li.classList.add('itemList')
+    tasks.forEach((task, index) => {
+        const li = document.createElement("li");
+        li.classList.add("itemList");
 
         li.innerHTML = `<span class="task-text" data-task-index="${index}">${task}</span>
                          <div class="buttons">
@@ -92,25 +92,70 @@ function renderAllTasks(list, tasks) {
                          </div>`;
 
         list.appendChild(li);
-    })
+    });
+}
+
+function addNoteTask(noteId, textTask) {
+    const notes = getNotes();
+
+    const index = notes.findIndex((note) => note.id === parseInt(noteId));
+
+    if (index !== -1) {
+        notes[index].tasks.push(textTask);
+
+        saveNotes(notes);
+
+        const noteCard = container.querySelector(`[data-note-id="${noteId}"]`).closest(".card-note");
+        if (noteCard) {
+            renderAllTasks(noteCard.querySelector(".list"), notes[index].tasks);
+        }
+    }
+}
+
+function removeNoteTask(noteId, taskTextToRemove, item) {
+    const notes = getNotes();
+
+    const index = notes.findIndex((note) => note.id === parseInt(noteId));
+
+    if (index !== -1) {
+        
+        notes[index].tasks = notes[index].tasks.filter(task => task !== taskTextToRemove);
+
+        saveNotes(notes);
+
+        item.remove()
+
+        console.log("berhasil mengapus item : ", item.textContent);
+        
+    }
 }
 
 function addEventListenerNote() {
     container.addEventListener("click", (event) => {
-        
-
-        const btnAdd = event.target.closest(".add-note-task")
-
+        const btnAdd = event.target.closest(".add-note-task");
         if (btnAdd) {
             const noteId = btnAdd.dataset.noteId;
-            const input = btnAdd.parentNode.querySelector(".note-input")
+            const input = btnAdd.parentNode.querySelector(".note-input");
             const textTask = input.value.trim();
 
-
-            if (textTask !== '') {
-                addNoteTask(noteId, textTask)
+            if (textTask !== "") {
+                addNoteTask(noteId, textTask);
+            } else {
+                alert("Invalid");
             }
-            
+        }
+
+        const removeBtn = event.target.closest(".btnDelete");
+        if (removeBtn) {
+            const listItem = removeBtn.closest(".itemList");
+            const list = listItem.closest(".list");
+
+            if (listItem) {
+                const noteId = list.dataset.noteId;
+                const textContent = listItem.querySelector(".task-text").textContent.trim();          
+                
+                removeNoteTask(noteId, textContent, listItem);
+            }
         }
     });
 }
