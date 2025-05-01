@@ -109,6 +109,22 @@ function addNewTask(noteId, textContent) {
     }
 }
 
+function removeTaskNote(noteId, taskTextToRemove, listItemToRemove) {
+    const notes = getNotes();
+
+    const index = notes.findIndex((note) => note.id === parseInt(noteId));
+
+    if (index !== -1) {
+        notes[index].tasks = notes[index].tasks.filter((task) => task !== taskTextToRemove);
+
+        saveNotes(notes);
+
+        listItemToRemove.remove();
+
+        console.log("Removing task:", taskTextToRemove, "from note:", noteId);
+    }
+}
+
 function addEventListenerNote() {
     container.addEventListener("click", (event) => {
         // add tasks
@@ -128,17 +144,20 @@ function addEventListenerNote() {
         // remove tasks
         const removeTask = event.target.closest(".btnRemove");
         if (removeTask) {
-            const list = removeTask.parentNode.closest(".list")
-            const spanTask = list.querySelector(".task-text")
-            
-            if (spanTask) {
-                const contentTask = spanTask.textContent.trim();
+            const listItem = removeTask.closest(".itemList");
+            const list = listItem.closest(".list");
 
-                console.log(contentTask);
+            
+
+            if (listItem) {
+                const noteId = list.dataset.noteId;
+                const taskTextToRemove = listItem.querySelector(".task-text").textContent.trim();
+
+                removeTaskNote(noteId, taskTextToRemove, listItem);
+            } else {
+                console.log("eror");
                 
             }
-            
-            
         }
     });
 }

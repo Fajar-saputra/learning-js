@@ -39,6 +39,10 @@ input {
     margin-bottom: .5rem;
 }
 
+input {
+    width: 100%;
+}
+
 input,
 button {
     padding: .5rem 1rem;
@@ -84,6 +88,8 @@ button {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    font-size: 1.5rem;
+    font-weight: 600;
 }
 
 .btnDelete {
