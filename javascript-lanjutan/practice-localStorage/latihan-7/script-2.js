@@ -130,6 +130,16 @@ function removeNoteTask(noteId, taskTextToRemove, item) {
     }
 }
 
+function completeNoteTask(noteId, text, listItem) {
+    const notes = getNotes();
+
+    const index = notes.findIndex(note => note.id === parseInt(noteId));
+
+    if (index !== -1) {
+        
+    }
+}
+
 function addEventListenerNote() {
     container.addEventListener("click", (event) => {
         const btnAdd = event.target.closest(".add-note-task");

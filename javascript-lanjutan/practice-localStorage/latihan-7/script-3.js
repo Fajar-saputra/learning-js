@@ -76,12 +76,12 @@ function renderAllTasks(taskList, tasks) {
 
     tasks.forEach((task, index) => {
         const li = document.createElement("li");
-        li.classList.add("itemList");
+        li.classList.add("item-list");
         // Menambahkan span untuk teks tugas (untuk fitur edit) dan tombol-tombol aksi
         li.innerHTML = `<span class="task-text" data-task-index="${index}">${task}</span>
                          <div class="buttons">
                              <i class='bx bx-check btnComplete'></i>
-                             <i class='bx bx-message-alt-minus btnRemove    '></i>
+                             <i class='bx bx-message-alt-minus btnRemove'></i>
                          </div>`;
         // Menambahkan elemen li ke dalam daftar tugas
         taskList.appendChild(li);
@@ -144,10 +144,8 @@ function addEventListenerNote() {
         // remove tasks
         const removeTask = event.target.closest(".btnRemove");
         if (removeTask) {
-            const listItem = removeTask.closest(".itemList");
+            const listItem = removeTask.closest(".item-list");
             const list = listItem.closest(".list");
-
-            
 
             if (listItem) {
                 const noteId = list.dataset.noteId;
@@ -156,8 +154,18 @@ function addEventListenerNote() {
                 removeTaskNote(noteId, taskTextToRemove, listItem);
             } else {
                 console.log("eror");
-                
             }
+        }
+
+        // complete task
+        const completeTask = event.target.closest(".btnComplete");
+        if (completeTask) {
+            // const list = completeTask.parentNode.closest(".list")
+            const listItem = completeTask.previousElementSibling;
+            // const noteId = listItem.dataset.noteId;
+            // const listItem = completeTask.parentNode.parentNode;
+            console.log(listItem);
+            // console.log(noteId);
         }
     });
 }

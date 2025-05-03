@@ -62,7 +62,7 @@ button {
 }
 
 
-.itemList {
+.item-list {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -73,7 +73,7 @@ button {
 }
 
 
-.itemList.completed .task-text{
+.item-list.completed .task-text{
     text-decoration: line-through;
     color: #888;
     width: fit-content;
