@@ -51,6 +51,7 @@
     align-items: center;
     margin-bottom: 1rem;
 }
+
 .heading-card .bx {
     font-size: 1.2rem;
     cursor: pointer;
@@ -60,6 +61,22 @@
 
 .heading-card .bx:hover {
     background-color: #fff;
+}
+
+.input-note {
+    width: 100%;
+    color: black;
+    background-color: #fff;
+    padding: .7rem 1rem;
+    border-radius: .2rem;
+    margin-bottom: .5rem;
+    text-transform: capitalize;
+    outline: none;
+    border: none;
+}
+
+.input-note:focus{
+    box-shadow: 0 0 5px rgba(0, 0, 0, .7);
 }
 
 .note-list {
