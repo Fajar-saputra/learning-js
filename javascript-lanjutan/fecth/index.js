@@ -1,50 +1,47 @@
-$('.search-button').on("click", function() {
-    
-    $.ajax({
-        url: 'http://www.omdbapi.com/?apikey=3f35f6d6&s=' + $(".input-keyword").val(),
-        success: results => {
-            const movies = results.Search;
-    
-            let cards = "";
-    
-            movies.forEach(movie => {
-                cards += createCard(movie);
-            });
-            
-            $(".movies-container").html(cards)
-            
-    
-            // ketika modal diklik
-            $(".modal-detail-button").on('click', function() {
-                $.ajax({
-                    url: 'http://www.omdbapi.com/?apikey=3f35f6d6&i=' + $(this).data('imdbid'),
-                    
-                    success: movie => { 
-                        const movieDetail = createModal(movie)
-    
-                        $(".modal-body").html(movieDetail)
-                    },
-    
-                    error: (e) => {
-                        console.log(e.responseText);
-                        
-                    }
-                })
-            })
-        },
-        error: (e) => {
-            console.log(e.responseText);
-            
-        }
-    })
+// $('.search-button').on("click", function() {
 
-})
+//     $.ajax({
+//         url: 'http://www.omdbapi.com/?apikey=3f35f6d6&s=' + $(".input-keyword").val(),
+//         success: results => {
+//             const movies = results.Search;
 
+//             let cards = "";
 
+//             movies.forEach(movie => {
+//                 cards += createCard(movie);
+//             });
+
+//             $(".movies-container").html(cards)
+
+//             // ketika modal diklik
+//             $(".modal-detail-button").on('click', function() {
+//                 $.ajax({
+//                     url: 'http://www.omdbapi.com/?apikey=3f35f6d6&i=' + $(this).data('imdbid'),
+
+//                     success: movie => {
+//                         const movieDetail = createModal(movie)
+
+//                         $(".modal-body").html(movieDetail)
+//                     },
+
+//                     error: (e) => {
+//                         console.log(e.responseText);
+
+//                     }
+//                 })
+//             })
+//         },
+//         error: (e) => {
+//             console.log(e.responseText);
+
+//         }
+//     })
+
+// })
 
 
 function createCard(movie) {
-    return  `<div class="col-md-3 my-5">
+    return `<div class="col-md-3 my-5">
                 <div class="card">
                     <img src="${movie.Poster}" class="card-img-top" alt="">
                     <div class="card-body">
@@ -68,7 +65,7 @@ function createModal(movie) {
                                         <h4>${movie.Title} (${movie.Year})</h4>
                                     </li>
                                     <li class="list-group-item"><b>Director: </b> ${movie.Director}</li>
-                                    <li class="list-group-item"><b>Actors  : </b> ${movie.Actor}</li>
+                                      <li class="list-group-item"><b>Actors  : </b> ${movie.Actor}</li>
                                     <li class="list-group-item"><b>Writer  : </b> ${movie.Writer}</li>
                                     <li class="list-group-item"><b>Plot    : </b> ${movie.Plot}</li>
                                 </ul>
