@@ -1,67 +1,51 @@
-const list = document.querySelector(".list");
-const input = document.querySelector(".input");
-const container = document.querySelector(".container");
+import { list, input, addBtn, container } from './modules/dom.js';
+import { createItem } from './modules/createItem.js';
+
+let itemBeingEdited = null;
 
 container.addEventListener("click", (e) => {
-    const addBtn = e.target.closest(".add-btn");
-    if (addBtn) {
-        addItem();
-        return;
-    }
+    const target = e.target;
 
-    const content = e.target.closest("p");
-    if (content && list.contains(content)) {
-        alert(`Kamu telah klik : ${content.textContent}`);
-        return;
-    }
+    // Tambah / Update
+    if (target.closest(".add-btn")) {
+        const value = input.value.trim();
+        if (!value) return alert("Enter your item");
 
-    const deleteBtn = e.target.closest(".delete-btn");
-    if (deleteBtn) {
-        const item = deleteBtn.closest(".item");
-        if (item) {
-            list.removeChild(item);
+        if (addBtn.textContent === "Tambah") {
+            const item = createItem(value);
+            list.appendChild(item);
+        } else if (addBtn.textContent === "Update") {
+            itemBeingEdited.querySelector(".content").textContent = value;
+            itemBeingEdited = null;
+            addBtn.textContent = "Tambah";
         }
-    }
-});
 
-function addItem() {
-    const valueInput = input.value;
-    if (valueInput.trim() !== "") {
-
-        const item = createEl(valueInput.trim())
-
-        list.appendChild(item);
         input.value = "";
         input.focus();
-    } else {
-        alert("Enter your item");
+        return;
     }
-}
 
-function createEl(inputValue) {
-  const listItem = document.createElement("li");
-  listItem.classList.add("item");
+    // Delete
+    if (target.closest(".delete-btn")) {
+        const item = target.closest(".item");
+        if (item) list.removeChild(item);
+        return;
+    }
 
-  const contentParagraph = document.createElement("p");
-  contentParagraph.classList.add("content");
-  contentParagraph.textContent = inputValue;
+    // Edit
+    if (target.closest(".edit-btn")) {
+        const item = target.closest(".item");
+        const content = item.querySelector(".content").textContent;
 
-  const buttonsDiv = document.createElement("div");
-  buttonsDiv.classList.add("buttons");
+        input.value = content;
+        input.focus();
+        itemBeingEdited = item;
+        addBtn.textContent = "Update";
+        return;
+    }
 
-  const deleteButton = document.createElement("button");
-  deleteButton.classList.add("delete-btn");
-  deleteButton.textContent = "Remove!!";
-
-  const editButton = document.createElement("button");
-  editButton.classList.add("edit-btn");
-  editButton.textContent = "Edit";
-
-  buttonsDiv.appendChild(deleteButton);
-  buttonsDiv.appendChild(editButton);
-
-  listItem.appendChild(contentParagraph);
-  listItem.appendChild(buttonsDiv);
-
-  return listItem;
-}
+    // Alert konten
+    if (target.closest("p")) {
+        alert(`Kamu telah klik: ${target.textContent}`);
+    }
+});

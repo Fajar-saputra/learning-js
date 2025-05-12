@@ -5,87 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Event Delegation Dinamis</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            padding: 2rem;
-        }
-
-        .container {
-            width: 400px;
-        }
-
-        button,
-        input {
-            padding: .3rem 1rem;
-            background-color: white;
-            outline: none;
-            border-radius: .3rem;
-            border: none;
-            cursor: pointer;
-            font-size: .8rem;
-            box-shadow: 0 0 4px rgba(0, 0, 0, .4);
-        }
-
-        input {
-            flex: 3;
-        }
-
-        button {
-            flex: 1;
-        }
-
-        li {
-            margin: 5px 0;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: fit-content;
-            width: 300px;
-            font-size: .9rem;
-        }
-
-        li:nth-child(odd) {
-            background-color: aquamarine;
-        }
-
-        p {
-            padding-left: 1rem;
-            flex: 3;
-        }
-
-
-        .delete-btn, .edit-btn {
-            flex: 1;
-            background-color: #f8f8f8;
-            color: #333;
-            border: 1px solid #ccc;
-            padding: 6px 10px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 0.8rem;
-            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-            z-index: 99;
-            margin-left: .2rem;
-        }
-
-        .delete-btn:hover {
-            background-color: #e74c3c;
-            color: white;
-            border-color: #c0392b;
-        }
-        .edit-btn:hover {
-            background-color: #e7cb3c;
-            color: white;
-            border-color: #04ff00;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -99,10 +19,7 @@
 
     </div>
 
-
-
-
-    <script src="main.js"></script>
+    <script type="module" src="main.js"></script>
 </body>
 
 </html>
