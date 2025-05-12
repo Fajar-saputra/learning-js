@@ -1,0 +1,40 @@
+.hover-shadow:hover {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15) !important;
+    transition: all 0.3s ease-in-out;
+}
+
+.object-fit-cover {
+    object-fit: cover;
+}
+
+.input-group.shadow-black {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5) !important;
+    border-radius: 0.5rem;
+}
+
+
+body {
+    background-color: #f8f9fa;
+}
+
+.card-title {
+    min-height: 3em;
+}
+
+.hover-shadow:hover {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1) !important;
+    transition: all 0.3s ease-in-out;
+}
+
+.object-fit-cover {
+    object-fit: cover;
+}
+
+.btn.search-button {
+    min-width: 100px;
+}
+
+.modal-body img {
+    max-height: 400px;
+    object-fit: cover;
+}
