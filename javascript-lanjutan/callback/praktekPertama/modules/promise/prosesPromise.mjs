@@ -1,6 +1,6 @@
-import { stepA } from "./stepA";
-import { stepB } from "./stepB";
-import { stepC } from "./stepC";
+import { stepA } from "./stepA.mjs";
+import { stepB } from "./stepB.mjs";
+import { stepC } from "./stepC.mjs";
 
 export async function prosesPromise() {
     try {
