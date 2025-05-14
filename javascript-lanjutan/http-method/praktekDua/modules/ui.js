@@ -1,7 +1,7 @@
-export function TestingUI() {
-  console.log("Testing dari UI");
-}
-
+/**
+ * Merender daftar user ke dalam elemen <ul> dengan ID 'user-list'.
+ * @param {Array} users - Daftar user dari API yang akan ditampilkan.
+ */
 export function renderUsers(users) {
   const list = document.getElementById('user-list');
   list.innerHTML = "";

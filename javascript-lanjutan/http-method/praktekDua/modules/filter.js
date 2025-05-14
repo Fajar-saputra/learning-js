@@ -1,5 +1,3 @@
-// filter.js
-
 /**
  * Melakukan penyaringan data user berdasarkan keyword pencarian.
  * @param {Array} users - Data user dari API per halaman

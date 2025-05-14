@@ -1,7 +1,7 @@
 import { fetchUsers } from "./api.js";
 import { renderUsers } from "./ui.js";
 import { updateStatusBtn, infoPage } from "./pagination.js";
-import { filterUsers } from "./filter.js"; // ✅ Import filter
+import { filterUsers } from "./filter.js";
 
 const nextBtn = document.getElementById("next-btn");
 const prevBtn = document.getElementById("prev-btn");
@@ -16,15 +16,15 @@ async function getUsers() {
   try {
     const user = await fetchUsers(currentPage);
     totalPages = user.total_pages;
-
-    currentUsers = user.data;
-    renderUsers(currentUsers);
+    currentUsers = user.data;  // Update currentUsers dengan data terbaru
+    renderUsers(currentUsers);  // Render dengan data terbaru
     infoPage(currentPage, totalPages, infoCurrent);
     updateStatusBtn(currentPage, totalPages, prevBtn, nextBtn);
   } catch (error) {
     console.log("error");
   }
 }
+
 
 filterInput.addEventListener("input", () => {
   const keyword = filterInput.value.toLowerCase();
@@ -45,5 +45,6 @@ prevBtn.addEventListener("click", () => {
     getUsers();
   }
 });
+
 
 getUsers();
