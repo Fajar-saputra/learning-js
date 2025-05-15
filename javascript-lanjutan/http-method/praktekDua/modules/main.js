@@ -26,6 +26,7 @@ async function getUsers() {
 }
 
 
+
 filterInput.addEventListener("input", () => {
   const keyword = filterInput.value.toLowerCase();
   const filtered = filterUsers(currentUsers, keyword); // ✅ Modular filter
